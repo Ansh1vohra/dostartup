@@ -44,11 +44,11 @@ const point = [
 ];
 
 const benefit = [
-    "GST registration certificate legally allows businesses to levy and collect GST from their customers.",
-    "GST certificate authenticates businesses' ability to claim credits for the GST paid on their purchases and operational expenses.",
-    "Entities with GST certification find it easy to apply for and secure loans from financial institutions, as it serves as proof of their legitimacy.",
-    "Businesses with a GST certificate are authorized to participate in government tenders, as they represent adherence to tax compliance.",
-    "The GST Certificate not only boosts its goodwill but also earns the trust of consumers owing to its adherence to national tax laws.",
+    "Authorization to Collect GST: It legally empowers registered businesses to charge GST from customers on taxable goods and services.",
+    "Input Tax Credit Eligibility: With a valid GST certificate, businesses can claim credits on GST paid for purchases and business-related expenses.",
+    "Improves Access to Finance: Financial institutions often consider a GST certificate as proof of business legitimacy, making it easier to obtain loans and credit.",
+    "Mandatory for Government Tenders: A GST-registered business is eligible to bid for and participate in various government projects and tenders.",
+    "Boosts Business Credibility: Holding a GST certificate strengthens your brand reputation and builds consumer trust by showcasing tax compliance and transparency.",
   ];
 
 export default function Types(){
@@ -71,7 +71,7 @@ export default function Types(){
                     Role of GST Registration Certificate
                   </h2>
                   <p className="text-gray-600 mb-6">
-                    The following are the crucial role of the GST registration certificate, as specified below:
+                  A GST registration certificate plays a vital role in establishing the legal identity of a business under the GST regime. Its key functions include:
                   </p>
 
                   <ul className="space-y-4 text-gray-700 text-sm">

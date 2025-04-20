@@ -1,47 +1,47 @@
 import { div } from "framer-motion/client";
 const steps = [
     {
-      title: 'Apply on GST Portal',
-      desc: 'The applicant must visit the GST portal and provide all the relevant details, such as the legal business name, PAN, email ID, mobile number, district, and state.',
+      title: 'Visit the GST Portal',
+      desc: 'Start by visiting the official GST portal. Enter essential details such as your legal business name, PAN, email address, mobile number, district, and state.',
     },
     {
-      title: 'Authenticate OTP',
-      desc: 'Once the details are submitted, the applicant receives an OTP on their registered mobile number and email ID.',
+      title: 'Authenticate via OTP',
+      desc: 'After submitting your details, you will receive a One-Time Password (OTP) on your registered mobile number and email ID. Verify the OTP to proceed.',
     },
     {
       title: 'TRN Generated',
-      desc: 'Once the OTP is verified, the applicant must send the TRN number duly generated via email.',
+      desc: 'Upon OTP verification, a Temporary Reference Number (TRN) will be generated and sent to your registered email.',
     },
     {
-      title: 'Submission for Verification',
-      desc: 'Next, the applicant needs to submit the details related to the promoters/partners, place of business, business details, authorized signatory, state, Aadhar authentication and verification.',
+      title: 'Submit Business Details for Verification',
+      desc: 'The next step involves entering additional details, such as the information about promoters/partners, place of business, business operations, authorized signatory, and Aadhar authentication.',
     },
     {
       title: 'Receive ARN Confirmation',
       desc: (
         <>
-          Once the applicant saves and continue filing with the form, the ARN confirmation number is generated via SMS.
-          <br />
+          Once the form is completed and submitted, an 
           <strong>
-            Tired of the complex GST registration process? Contact consultants at Corpbiz and enjoy worry-free registration.
+          Application Reference Number (ARN) 
           </strong>
+          will be generated and sent to your registered mobile number via SMS.
         </>
       ),
     },
 ];
 
 const violations = [
-    "In the case where a taxpayer fails to pay tax or underpays accidentally, a penalty equal to 10% of the pending tax is imposed.",
-    "In case an individual or a business avoids paying taxes intentionally, they draw a penalty equivalent to 100% of the amount evaded as tax.",
-    "It is advisable to make the tax payments within stipulated time limits. However, this violation draws a minimum penalty of INR 10,000.",
-    "Interest is assessed on the outstanding tax amount in case GST liabilities are not paid.",
-    "Suspension or cancellation of your GST registration certificate."
+    "If a taxpayer underpays or fails to pay the tax due to an oversight, a penalty of 10% of the unpaid tax amount is imposed.",
+    "In cases where a taxpayer intentionally evades tax payments, a penalty equal to 100% of the evaded tax amount will be charged.",
+    "It's crucial to pay taxes within the prescribed deadlines. Failing to do so results in a minimum penalty of INR 10,000.",
+    "Interest will be levied on any unpaid GST liabilities, adding to the amount due.",
+    "In extreme cases of non-compliance, your GST registration certificate may be suspended or cancelled."
 ];
 
 const consequences = [
-    "Penalty of Rs. 10,000 or the amount of tax evaded or any short tax due, whichever is greater, as per Section 122 of the CGST Act.",
-    "Penalty for not registering GST is Rs. 2 lakhs or Rs. 10,000, whichever is higher.",
-    "Rs. 2 lakh is assessed if an individual fails to register for GST."
+    "As per Section 122 of the CGST Act, a penalty of ₹10,000 or the tax amount evaded, whichever is higher, will be imposed on those who fail to register for GST when liable to do so.",
+    "In certain cases, the penalty for non-registration can go up to ₹2 lakhs, depending on the nature and severity of the default.",
+    "Non-registration can also lead to legal consequences, interest on unpaid tax, and affect the credibility of your business."
 ];
 
 
@@ -51,7 +51,7 @@ export default function Documents(){
             <div className="max-w-6xl mx-auto py-12 px-4 md:px-8" id="documents">
                 <h2 className="text-2xl md:text-3xl font-bold text-center mb-2">How to Apply for GST Registration Online?</h2>
                     <p className="text-center text-gray-600 mb-10">
-                        The process of GST registration is now easy and simple. The step-by-step guide to apply for GST registration online are mentioned below-
+                    The GST registration process has been streamlined for simplicity and ease. Here’s a step-by-step guide on how to apply for GST registration online-
                     </p>
 
                     <div className="flex flex-col md:flex-row items-start gap-10">
@@ -87,7 +87,7 @@ export default function Documents(){
             <section className="bg-white py-12 px-4 md:px-8">
               <div className="max-w-6xl mx-auto text-center mb-10">
                 <h2 className="text-2xl md:text-3xl font-bold mb-2">
-                  Consequences for Non-Compliance with GST Registration
+                GST registration is mandatory for certain businesses, and failure to comply with the legal requirements can result in significant penalties. Below are the consequences of not obtaining GST registration or violating GST norms-
                 </h2>
                 <p className="text-gray-600">
                   It is mandatory for certain businesses to obtain GST registration. Violating the regulatory and legal GST norms attract the following penalties:
@@ -98,7 +98,7 @@ export default function Documents(){
               {/* Left Card */}
               <div className="bg-blue-100 p-6 rounded-lg shadow-md">
                 <h3 className="text-lg font-bold text-gray-900 mb-4">
-                  Penalty For Violation In Case Of GST Registration
+                Penalty for Underpayment or Non-Payment of Tax
                 </h3>
                 <ul className="space-y-3">
                   {violations.map((item, idx) => (
@@ -113,8 +113,9 @@ export default function Documents(){
               {/* Right Card */}
               <div className="bg-blue-800 text-white p-6 rounded-lg shadow-md">
                 <h3 className="text-lg font-bold mb-4">
-                  Consequences For Not Registering GST
+                Consequences of Not Registering Under GST
                 </h3>
+                <p className="p-3">Failure to register under GST, when required, can lead to strict penalties under the CGST Act. Below are the implications of non-registration:</p>
                 <ul className="space-y-3">
                   {consequences.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-2">

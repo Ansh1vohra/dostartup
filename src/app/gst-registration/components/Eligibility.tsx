@@ -2,26 +2,26 @@ import { CheckCircle2 } from 'lucide-react';
 
 const points = [
     {
-      heading: "Eligibility Checklist for Filing GST Registration",
+      heading: "Who is Eligible for GST Registration? ",
       items: [
-        "Businesses having an aggregate annual turnover of more than INR 40 Lakhs must apply for GST registration. However, for any special category state, the threshold amount is INR 20 Lakhs.",
-        "All service providers with an aggregate annual turnover of over INR 20 Lakhs must apply for GST registration. However, the limit for any special category states has been set at INR 10 Lakhs.",
-        "The business or service provider dealing with goods and services is exempted from the purview of the GST and is not required to fulfill these thresholds.",
-        "Businesses previously registered under the old tax structures, such as Excise, Service Tax, VAT, etc., are required to shift to the newer GST structure.",
-        "Even if certain individuals and business entities are non-residents and do not reside in India but are involved in taxable dealings within India, they are required to obtain GST registration.",
-        "Entities indulged in the business of offering information online, database access, or retrieval services from outside India to any individuals in India, except for the ones who have an existing GST, are also required to obtain a GST registration certificate."
+        " If your business has an annual turnover exceeding ₹40 lakhs (₹20 lakhs for special category states), you are required to register under GST.",
+        "Service-based businesses must register if their annual turnover crosses ₹20 lakhs (₹10 lakhs for special category states).",
+        "Businesses exclusively dealing in exempted goods or services are not bound by these threshold limits and may be exempt from GST registration.",
+        "Entities registered under the previous tax regimes such as VAT, Excise, or Service Tax must mandatorily transition to the GST system.",
+        "Individuals or businesses based outside India but engaged in taxable supplies within India must obtain GST registration before commencing operations.",
+        "Foreign entities providing online information, database access, or digital content services to Indian users (who are not already registered under GST) are also required to register."
       ]
     },
     {
-        heading: "Other Entities Eligible to Apply for GST Registration",
+        heading: "Additional Categories That Must Register for GST",
         items: [
-          "Any individual or business dealing with goods supplied across state boundaries.",
-          "Businesses that are bound by the framework to pay tax under the reverse charge.",
-          "Input service distributors and their agents or representatives.",
-          "All operators and aggregators delivering goods and services through e-commerce platforms.",
-          "Anyone who undertakes taxable supply (if applicable).",
-          "Anyone who is identified as a representative and supplies goods and services on behalf of the main falls under this category.",
-          "Any individuals or businesses, which deliver goods and services through e-commerce aggregators."
+          "Any individual or business involved in the supply of goods across state lines must obtain GST registration, regardless of turnover.",
+          "Entities that are liable to pay tax under the reverse charge mechanism are mandated to register under GST.",
+          "Businesses distributing input tax credit across branches, and their authorized agents, are required to be registered.",
+          "Platforms facilitating the supply of goods or services online—like aggregators or marketplaces, must be registered under GST.",
+          "Any seller offering taxable goods or services through e-commerce portals must register, even if their turnover is below the standard limit.",
+          "Individuals supplying goods or services on behalf of someone else—such as agents or business representatives—fall under mandatory GST registration.",
+          "Even if not legally mandated, any individual or business providing taxable supplies may choose to register to avail input credit and build credibility."
         ]
     },
     {

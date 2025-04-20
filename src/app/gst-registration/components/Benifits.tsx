@@ -1,42 +1,48 @@
 const benefit = [
     {
-      title: 'Regulatory Compliance',
+      title: 'Legal Recognition',
       img: 'https://corpbiz.io/img/adv_icon1.webp',
       description:
-        'GST registration safeguards the interests of individuals and business entities operating in India. It ensures their legal and tax compliance, thus saving them from paying penalties for violations.',
+        'GST registration gives your business a legal identity, enabling you to operate smoothly across India.',
     },
     {
-      title: 'Easy Compliance',
+      title: 'Input Tax Credit',
       description:
-        'GST registration is not a complicated process. It helps business entities streamline their processes for filing tax returns and making online payments.',
+        'Registered businesses can claim input tax credit on purchases, which helps reduce overall tax liability.',
     },
     {
-      title: 'Maintains Transparency',
+      title: 'Wider Market Access',
       description:
-        'GST registration allows business entities to maintain updated business records. This helps build a sense of reliability and facilitates operational transparency.',
+        'With GST registration, businesses can trade inter-state without restrictions, opening up wider markets and growth opportunities.',
     },
     {
-        title: 'Easy Compliance',
+        title: 'Better Compliance',
         description:
-          'GST registration is not a complicated process. It helps business entities streamline their processes for filing tax returns and making online payments.',
+          'Being registered ensures that your business follows a structured and unified tax system, reducing chances of legal issues.',
     },
     {
-        title: 'Maintains Transparency',
+        title: 'Improved Business Credibility',
         description:
-          'GST registration allows business entities to maintain updated business records. This helps build a sense of reliability and facilitates operational transparency.',
+          'A GSTIN builds trust among customers, vendors, and partners, enhancing your professional image.',
     },
     {
-      title: 'Legal Protection',
+      title: 'Eligibility for Tenders and Contracts',
       description:
-        'GST registration safeguards the legal and regulatory standards of the business, thereby protecting their legal status.',
+        'Many government and corporate contracts require GST registration as a mandatory criterion.',
+    },
+    {
+        title: 'Easier Business Expansion',
+        description:
+          'GST registration simplifies the process of opening branches or operating in multiple states.',
     },
   ];
 
 export default function Benifits(){
+    return(
     <div>
         <section className="h-screen overflow-hidden bg-[#fafafa] px-6 py-10 md:px-16 lg:px-24">
             <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
-            Who Needs to Register?
+            What Are the Key Benefits of GST Registration?
             </h2>
             <div className="flex h-[calc(100vh-6rem)] gap-8">
                 {/* LEFT IMAGE - STICKY */}
@@ -76,4 +82,5 @@ export default function Benifits(){
             </div>
           </section>
     </div>
+    );
 }

@@ -7,7 +7,7 @@ import Link from "next/link";
 import { CheckCircle } from 'lucide-react';
 import FlipCard from "@/components/FlipCard";
 
-import Types from "./components/types";
+import Types from "./components/Types";
 import Faq from "./components/Faq";
 import Features from "./components/Features";
 import Documents from "./components/Documents";
@@ -216,7 +216,7 @@ export default function gstRegisteration(){
             
             {/* features */}
             <div id="features">
-                <Features/>
+                <Features />
             </div>
 
             {/* type */}
