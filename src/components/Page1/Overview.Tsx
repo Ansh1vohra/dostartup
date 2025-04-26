@@ -11,7 +11,7 @@ export default function Overview(){
                 {/* LEFT SIDE - TEXT */}
                 <div className="lg:w-1/2">
                     <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                    GST Registration in India – Everything You Need to Know
+                    GST Registration in India - Everything You Need to Know
                     </h2>
                     <p className="text-gray-700 mb-4">
                         If you are looking for GST registration to empower your business legally, you are at the right place.
