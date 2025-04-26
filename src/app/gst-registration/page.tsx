@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from "react";
-import clsx from 'clsx';
+// import clsx from 'clsx';
 import Link from "next/link";
 
 import Types from "../../components/Page1/Types";
