@@ -86,38 +86,38 @@ const faqs: FAQ[] = [
   },
 ];
 
-const testimonials: Testimonial[] = [
-  {
-    name: "Anjali Bhardwaj",
-    title: "Getting GST registration done",
-    feedback:
-      "Getting my GST registration done with Corpbiz was a great experience. Their team is knowledgeable and took care of everything efficiently.",
-  },
-  {
-    name: "Ajay Pratap",
-    title: "GST registration process smooth and simple",
-    feedback:
-      "Corpbiz made the GST registration process smooth and simple. They handled everything, and I didn’t have to stress about any of the paperwork.",
-  },
-  {
-    name: "Rajesh Singh",
-    title: "Impressed for my GST registration",
-    feedback:
-      "I was really impressed with Corpbiz for my GST registration. Their team is professional and made the whole process easy to understand.",
-  },
-  {
-    name: "Ajay Pratap",
-    title: "GST registration process smooth and simple",
-    feedback:
-      "Corpbiz made the GST registration process smooth and simple. They handled everything, and I didn’t have to stress about any of the paperwork.",
-  },
-  {
-    name: "Rajesh Singh",
-    title: "Impressed for my GST registration",
-    feedback:
-      "I was really impressed with Corpbiz for my GST registration. Their team is professional and made the whole process easy to understand.",
-  }
-];
+// const testimonials: Testimonial[] = [
+//   {
+//     name: "Anjali Bhardwaj",
+//     title: "Getting GST registration done",
+//     feedback:
+//       "Getting my GST registration done with Corpbiz was a great experience. Their team is knowledgeable and took care of everything efficiently.",
+//   },
+//   {
+//     name: "Ajay Pratap",
+//     title: "GST registration process smooth and simple",
+//     feedback:
+//       "Corpbiz made the GST registration process smooth and simple. They handled everything, and I didn’t have to stress about any of the paperwork.",
+//   },
+//   {
+//     name: "Rajesh Singh",
+//     title: "Impressed for my GST registration",
+//     feedback:
+//       "I was really impressed with Corpbiz for my GST registration. Their team is professional and made the whole process easy to understand.",
+//   },
+//   {
+//     name: "Ajay Pratap",
+//     title: "GST registration process smooth and simple",
+//     feedback:
+//       "Corpbiz made the GST registration process smooth and simple. They handled everything, and I didn’t have to stress about any of the paperwork.",
+//   },
+//   {
+//     name: "Rajesh Singh",
+//     title: "Impressed for my GST registration",
+//     feedback:
+//       "I was really impressed with Corpbiz for my GST registration. Their team is professional and made the whole process easy to understand.",
+//   }
+// ];
 
 export default function Faq() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
