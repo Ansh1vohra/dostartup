@@ -1,7 +1,8 @@
 'use client';
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
+// import { useState, useEffect, useRef } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { motion, useAnimation } from 'framer-motion';
+// import { motion, useAnimation } from 'framer-motion';
 
 const services = [
     {

@@ -69,7 +69,7 @@ export default function Overview(){
                     GST registration certificate is an official document issued by the Government of India to business entities registered under the Goods and Services Tax (GST) framework. GST certificate stands as a testimony to the entity’s legal standing and legitimate registration under GST. However, the certificate further displays critical information, including the GST identification number, business name, and the official address of the business.
                 </p>
                 <p className="text-gray-700">
-                    The GST Certificate is important for accomplishing tax obligations and crucial in cementing an entity's credibility and operational legality. Furthermore, the GST registration verification is of utmost importance for any business. It is essential for{' '}
+                    The GST Certificate is important for accomplishing tax obligations and crucial in cementing an entity&apos;s credibility and operational legality. Furthermore, the GST registration verification is of utmost importance for any business. It is essential for{' '}
                     <Link href="#" className="text-blue-600 hover:underline">LLPs</Link>,{' '}
                     <Link href="#" className="text-blue-600 hover:underline">OPCs</Link>,{' '}
                     <Link href="#" className="text-blue-600 hover:underline">private limited companies</Link> and{' '}

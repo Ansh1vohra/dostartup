@@ -32,7 +32,7 @@ const Documentation = () => {
           <li>Details of key management personnel with real address & contact particulars</li>
           <li>Passport-sized photos of the individual seeking the license</li>
           <li>Identification and address proof of the individual</li>
-          <li>Applicant's PAN card</li>
+          <li>Applicant&apos;s PAN card</li>
           <li>Property ownership documents or rent agreement and NOC</li>
           <li>Particulars on Raw material suppliers</li>
           <li>Form B duly completed and authenticated</li>

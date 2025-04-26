@@ -10,15 +10,15 @@ const Registration = () => {
             <ul className="text-gray-700 mt-2 space-y-2 list-inside">
               <li>Arranging the aforesaid Document and Filing of application via Form B.</li>
               <li>Submission of form to licensing authority via online portal FOSCOS. The filing process ends with the submission of standard fees.</li>
-              <li>In-depth scrutiny of applications and Documents by FSSAI's officials.</li>
-              <li>If needed, an on-site inspection will be conducted by FSSAI's officials to determine the level of compliance at business premises.</li>
+              <li>In-depth scrutiny of applications and Documents by FSSAI&apos;s officials.</li>
+              <li>If needed, an on-site inspection will be conducted by FSSAI&apos;s officials to determine the level of compliance at business premises.</li>
               <li>Grant of State FSSAI License by the licensing authority (Note: The application may be revoked by the licensing authority in case of non-compliance).</li>
               <li>After securing the license, the business owner can commence their business operation.</li>
             </ul>
           </section>
 
           <h2 className="text-xl font-semibold mt-4">
-            Penalty for Not Complying with FSSAI's Norms
+            Penalty for Not Complying with FSSAI&apos;s Norms
           </h2>
           <section>
             <p className="text-gray-700 mb-4">

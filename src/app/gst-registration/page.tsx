@@ -22,44 +22,44 @@ const tabs = [
   { name: 'FAQs', link: '#faqs' },
 ];
 
-const services = [
-  {
-    title: "Simplified Registration",
-    desc: "We at Corpbiz have successfully processed and simplified around 5000+ GST registration applications in India.",
-  },
-  {
-    title: "High Success Rate",
-    desc: "We at Corpbiz guarantee a 99% business success rate while obtaining a GST registration certificate in India.",
-  },
-  {
-    title: "Simplify Documentation",
-    desc: "We at Corpbiz assist in simplifying the documentation required to obtain a GST registration certificate in India.",
-  },
-  {
-    title: "Legal Advice",
-    desc: "Corpbiz provides legal advice and regular updates to simplify the legal necessities for securing GST registration in India.",
-  },
-  {
-    title: "End-to-End Solutions",
-    desc: "We at Corpbiz provide end-to-end solutions to address queries related to GST registration in India.",
-  },
-  {
-    title: "Affordable Pricing",
-    desc: "Corpbiz offers 100% affordable and transparent pricing for GST registration services in India.",
-  },
-  {
-    title: "Reduces Compliance Buden",
-    desc: "We at Corpbiz ensure that the compliance burden is reduced by up to 30%.",
-  },
-  {
-    title: "10+ Years of Extensive Experience",
-    desc: "We at Corpbiz possess an experienced team with extensive knowledge and an in-depth understanding.",
-  },
-  {
-    title: "24/7 Customer Support",
-    desc: "Corpbiz offers 24/7 customer support assistance to address compliance-related concerns or queries.",
-  },
-];
+// const services = [
+//   {
+//     title: "Simplified Registration",
+//     desc: "We at Corpbiz have successfully processed and simplified around 5000+ GST registration applications in India.",
+//   },
+//   {
+//     title: "High Success Rate",
+//     desc: "We at Corpbiz guarantee a 99% business success rate while obtaining a GST registration certificate in India.",
+//   },
+//   {
+//     title: "Simplify Documentation",
+//     desc: "We at Corpbiz assist in simplifying the documentation required to obtain a GST registration certificate in India.",
+//   },
+//   {
+//     title: "Legal Advice",
+//     desc: "Corpbiz provides legal advice and regular updates to simplify the legal necessities for securing GST registration in India.",
+//   },
+//   {
+//     title: "End-to-End Solutions",
+//     desc: "We at Corpbiz provide end-to-end solutions to address queries related to GST registration in India.",
+//   },
+//   {
+//     title: "Affordable Pricing",
+//     desc: "Corpbiz offers 100% affordable and transparent pricing for GST registration services in India.",
+//   },
+//   {
+//     title: "Reduces Compliance Buden",
+//     desc: "We at Corpbiz ensure that the compliance burden is reduced by up to 30%.",
+//   },
+//   {
+//     title: "10+ Years of Extensive Experience",
+//     desc: "We at Corpbiz possess an experienced team with extensive knowledge and an in-depth understanding.",
+//   },
+//   {
+//     title: "24/7 Customer Support",
+//     desc: "Corpbiz offers 24/7 customer support assistance to address compliance-related concerns or queries.",
+//   },
+// ];
 
 export default function GstRegisteration() {
   const [activeTab, setActiveTab] = useState('Overview');

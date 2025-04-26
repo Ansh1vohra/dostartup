@@ -1,4 +1,4 @@
-import { div } from "framer-motion/client";
+// import { div } from "framer-motion/client";
 const steps = [
     {
       title: 'Apply on GST Portal',
