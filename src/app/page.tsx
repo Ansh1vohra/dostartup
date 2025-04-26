@@ -1,10 +1,86 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import CountUp from "react-countup";
+
+const heroImages = ["/hero4.jpg", "/hero5.jpg", "/hero6.jpg"];
+
+const services = [
+  {
+    title: "Private Limited Company Registration",
+    description:
+      "Get your company registered hassle-free with our expert guidance.",
+    image: "/private.jpg",
+    link: "/register/private-limited-company",
+  },
+  {
+    title: "One Person Company Registration",
+    description: "Register your OPC and enjoy limited liability benefits.",
+    image: "/opc.jpg",
+    link: "/register/one-person-company",
+  },
+  {
+    title: "MSME Registration",
+    description:
+      "Boost your business with MSME registration and avail government benefits.",
+    image: "/msme.jpg",
+    link: "/register/msme",
+  },
+  {
+    title: "GST Registration",
+    description:
+      "Get your GST number quickly and efficiently with our experts.",
+    image: "/gst.jpg",
+    link: "/register/gst",
+  },
+];
+
+interface StatItem {
+  stat: number;
+  label: string;
+  suffix: string;
+}
+
+const stats: StatItem[] = [
+  { stat: 2000, label: "Startups Registered", suffix: "+" },
+  { stat: 1500, label: "MSME/IEC Certifications", suffix: "+" },
+  { stat: 500, label: "GST Filings", suffix: "+" },
+  { stat: 100, label: "NBFC/PSARA Licenses", suffix: "+" },
+];
 
 export default function Home() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentHero, setCurrentHero] = useState(0);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const [hasBeenVisible, setHasBeenVisible] = useState<boolean>(false);
+
+  // Function to check if the section is in viewport
+  const handleScroll = () => {
+    if (!sectionRef.current) return;
+
+    const rect = sectionRef.current.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+
+    if (isVisible && !hasBeenVisible) {
+      setHasBeenVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // check on initial load too
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [hasBeenVisible]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentHero((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -13,359 +89,501 @@ export default function Home() {
     }
   };
 
-  // Data for components
-  const topServices = [
-    "Compliance Tracker",
-    "Launch My Business",
-    "Compliance Solutions",
-    "Business Incorporation",
-    "Trademark Transfer",
-    "PSARA Certification",
-    "EPR Compliance for E-Waste",
-    "Explore More",
-  ];
-
-  const servicesDetails = [
-    {
-      title: "Startup Registration",
-      description:
-        "Registering a new business can be challenging, but we strive to ensure maximum ease of registration...",
-    },
-    {
-      title: "Tax Auditing",
-      description:
-        "Managing taxes is not easy but crucial for business. Our specialists guarantee precise tax audits...",
-    },
-    {
-      title: "Environmental Consultancy",
-      description:
-        "We help businesses adopt sustainable practices and comply with eco-friendly policies...",
-    },
-    {
-      title: "Advisory and Consultancy",
-      description:
-        "Our specialists provide customized advice tailored to your unique situation...",
-    },
-    {
-      title: "Regulatory (BIS, CDSCO, ISO)",
-      description:
-        "We help with compliance and obtaining necessary certifications like BIS, CDSCO, and ISO...",
-    },
-    {
-      title: "Licensing",
-      description:
-        "We handle everything from license application to approval, ensuring your business is fully compliant...",
-    },
-    {
-      title: "On-Demand CA/CS Services",
-      description:
-        "Whether you need a Chartered Accountant or Company Secretary...",
-    },
-    {
-      title: "Free Business Templates and DPR",
-      description:
-        "We provide various templates to streamline your paperwork...",
-    },
-  ];
-
-  const processSteps = [
-    {
-      title: "Deep-Dive Research",
-      description: "We analyze your unique needs and market trends.",
-    },
-    {
-      title: "Collaborative Strategy Sessions",
-      description: "Your vision + our expertise = actionable plans.",
-    },
-    {
-      title: "Innovation Lab",
-      description: "Custom solutions designed for scalability.",
-    },
-    {
-      title: "Agile Revisions",
-      description: "Your feedback shapes our work—no rigid templates.",
-    },
-    {
-      title: "Seamless Execution",
-      description: "From paperwork to launch, we've got you covered.",
-    },
-  ];
-
-  const whyUsPoints = [
-    {
-      icon: "💰",
-      title: "Transparent Pricing",
-      description: "No hidden fees.",
-    },
-    {
-      icon: "💻",
-      title: "Tech-Driven Tools",
-      description: "Streamline processes with our platform.",
-    },
-    {
-      icon: "👤",
-      title: "Dedicated Advisor",
-      description: "One point of contact for all needs.",
-    },
-    {
-      icon: "🌱",
-      title: "Eco-Conscious",
-      description: "Green business practices integrated.",
-    },
-  ];
-
-  const stats = [
-    {
-      value: "INDIA'S LARGEST LEGAL TECH COMPANY",
-      description:
-        "Complete business compliance solutions powered by technology and experts.",
-    },
-    {
-      value: "99.9% CLIENT SATISFACTION",
-      description: "Expert services refined to meet your exact requirements.",
-    },
-    {
-      value: "EXCELLENT ADVISORY SERVICES",
-      description:
-        "India's most extensive professional network for your success.",
-    },
-  ];
-
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white text-gray-800 scroll-smooth">
+      {/* WhatsApp Icon */}
       <a
         href="https://api.whatsapp.com/send?phone=9999644807&text=Hello,%20DoStartup"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <div className="h-[40px] w-[40px] flex fixed z-10 bottom-10 right-10 cursor-pointer md:bottom-20 md:h-[50px] md:w-[50px]">
-          <img src="whatsapp2.png" alt="whatsapp.png" />
+        <div className="fixed bottom-10 right-10 z-50 h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
+          <img src="/whatsapp2.png" alt="whatsapp" />
         </div>
       </a>
 
       {/* Hero Section */}
-      <section className="px-4 py-20 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-            <span className="block">Simplify Your Business </span>
-            <span className="block text-emerald-600">
+      <section className="relative h-[91vh] bg-gray-900 flex items-center justify-center overflow-hidden">
+        <motion.div
+          key={currentHero}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 0.7, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            duration: 1.5,
+            ease: [0.33, 1, 0.68, 1] // Smooth ease-in-out curve
+          }}
+          className="absolute inset-0 bg-cover bg-center z-0"
+          style={{
+            backgroundImage: `url(${heroImages[currentHero]})`,
+          }}
+        />
+
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeOut"
+          }}
+          className="relative z-10 text-center px-6 w-full"
+        >
+          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold drop-shadow-lg leading-tight">
+            Simplify Your Business <br />
+            <motion.span
+              className="text-emerald-400"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
               Compliance & Management
-            </span>
+            </motion.span>
           </h1>
-          <p className="mt-6 max-w-lg mx-auto text-xl text-gray-600">
+
+          <motion.p
+            className="mt-6 text-white text-lg md:text-xl lg:text-2xl opacity-90"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.9 }}
+            transition={{ delay: 0.7, duration: 0.8 }}
+          >
             Partner With Us.
-          </p>
+          </motion.p>
 
-          <form onSubmit={handleSearch} className="mt-10 max-w-md mx-auto">
-            <div className="relative">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search for compliance services..."
-                spellCheck={false}
-                className="w-full px-6 py-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-lg"
-              />
-              <button
-                type="submit"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-emerald-600 text-white p-2 rounded-md hover:bg-emerald-700"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+            className="mt-10 max-w-xl mx-auto"
+          >
+            <form onSubmit={handleSearch}>
+              <div className="relative">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search for compliance services..."
+                  spellCheck="false"
+                  className="w-full px-6 py-4 rounded-lg border-2 border-white bg-white bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-emerald-500 text-lg shadow-xl"
+                />
+                <button
+                  type="submit"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-emerald-500 hover:bg-emerald-600 transition-colors p-2 rounded-md"
+                  aria-label="Search"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </button>
-            </div>
-          </form>
-
-          <div className="mt-16">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-              Top services for you
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              {topServices.map((service, index) => (
-                <div
-                  key={index}
-                  onClick={() =>
-                    router.push(
-                      `/services/${service.toLowerCase().replace(/\s+/g, "-")}`
-                    )
-                  }
-                  className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer border border-gray-100 hover:border-emerald-200 text-center"
-                >
-                  <div className="text-emerald-600 mb-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-8 w-8 mx-auto"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                  </div>
-                  <h3 className="font-medium text-gray-800">{service}</h3>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-16 pt-6 border-t border-gray-200">
-            <p className="text-gray-600">
-              Trusted by 42,800+ Clients Worldwide | ★★★★★ 4.9 Rating
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Who We Are Section */}
-      <section className="bg-emerald-50 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">WHO ARE WE?</h2>
-          <h3 className="text-4xl font-bold text-emerald-600 mb-6">
-            DoStartup - Empowering Startups, Every Step of the Way
-          </h3>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            At Dostartup, we combine expertise with passion to help your
-            business thrive. From ideation to execution, our tailored solutions
-            ensure compliance, innovation, and growth.
-          </p>
-        </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Services Section */}
-      <section className="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-              Best Business Management Platform
-            </h2>
-            <div className="mt-6 max-w-3xl mx-auto">
-              <p className="text-lg text-gray-600">
-                DoStartup is more than a service, we are your dedicated partner
-                in navigating the Indian business landscape. We understand the
-                challenges startups and enterprises face.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {servicesDetails.map((service, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
-              >
-                <div className="text-emerald-600 mb-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-10 w-10"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-16">
-            WHY DoStartup
+      <section className="py-20 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-12">
+            Our Top Services
           </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyUsPoints.map((point, index) => (
-              <div
-                key={index}
-                className="text-center p-6 border border-gray-100 rounded-lg hover:shadow-md transition-shadow"
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+            {services.map((service, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.05 }}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden transition cursor-pointer"
+                onClick={() => router.push(service.link)}
               >
-                <div className="text-4xl mb-4">{point.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  {point.title}
-                </h3>
-                <p className="text-gray-600">{point.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="bg-emerald-600 text-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <h3 className="text-2xl font-bold mb-4">{stat.value}</h3>
-                <p className="text-emerald-100">{stat.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Process Section */}
-      <section className="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Our Process
-            </h2>
-            <h3 className="text-2xl text-emerald-600">
-              How We Deliver Excellence
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-            {processSteps.map((step, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center"
-              >
-                <div className="bg-emerald-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
-                  <span className="text-emerald-600 text-2xl font-bold">
-                    {index + 1}
-                  </span>
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-5">
+                  <h3 className="text-xl font-semibold">{service.title}</h3>
+                  <p className="mt-2 text-gray-600">{service.description}</p>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  {step.title}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline / Process Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-10">How It Works</h2>
+          <div className="space-y-8">
+            {[
+              "Choose Service",
+              "Submit Documents",
+              "We Process It",
+              "You Get Certified",
+            ].map((step, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -100 : 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="bg-emerald-50 rounded-lg shadow-md p-6 text-center"
+              >
+                <h3 className="text-xl font-semibold">{step}</h3>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-12">What Our Clients Say</h2>
+          <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              "“They made everything so easy!”",
+              "“Quick, reliable and supportive!”",
+              "“Perfect service for startups!”",
+            ].map((quote, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.05 }}
+                className="bg-white shadow-md rounded-xl p-6"
+              >
+                <p className="italic text-gray-600 mb-2">{quote}</p>
+                <p className="font-semibold text-emerald-600">
+                  — Happy Client {i + 1}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Us */}
+      <section className="py-20 bg-white text-center px-6">
+        <h2 className="text-3xl font-bold text-gray-800">Who We Are</h2>
+        <p className="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
+          At DoStartup, we’re dedicated to simplifying legal compliance and
+          registration processes for startups and small businesses. Our platform
+          offers expert guidance and seamless services to help you grow your
+          business with confidence.
+        </p>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-20 bg-gray-100">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-10">Why Choose DoStartup?</h2>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { title: "Expert Guidance", icon: "📘" },
+              { title: "Fast Processing", icon: "⚡" },
+              { title: "Affordable Pricing", icon: "💰" },
+              { title: "Reliable Support", icon: "📞" },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.05 }}
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg"
+              >
+                <div className="text-4xl mb-3">{item.icon}</div>
+                <h3 className="text-lg font-semibold text-gray-700">
+                  {item.title}
                 </h3>
-                <p className="text-gray-600">{step.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="py-20 bg-white">
+        <div ref={sectionRef} className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-10">Our Achievements</h2>
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((item, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.05 }}
+                className="text-center"
+              >
+                <h3 className="text-4xl font-bold text-emerald-600">
+                  {hasBeenVisible ? (
+                    <CountUp
+                      end={item.stat}
+                      duration={2}
+                      suffix={item.suffix}
+                    />
+                  ) : (
+                    `0${item.suffix}`
+                  )}
+                </h3>
+                <p className="text-gray-700 mt-2">{item.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Expertise */}
+      <section className="py-20 bg-white text-gray-800">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-10">
+            Our Expertise
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              "Startup Legal Advisory",
+              "Trademark & IP Services",
+              "Tax & Financial Compliance",
+              "FSSAI & ISO Certifications",
+              "Private/Public Ltd Incorporation",
+              "Corporate Governance",
+            ].map((expertise, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.05 }}
+                className="bg-gray-100 p-6 rounded-xl shadow-md"
+              >
+                <h3 className="text-xl font-semibold">{expertise}</h3>
+                <p className="mt-2 text-gray-600">
+                  We offer expert support in {expertise.toLowerCase()} tailored
+                  for modern businesses.
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Registration Packages */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-10">
+            Popular Registration Packages
+          </h2>
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                name: "Startup Combo Pack",
+                price: "₹5,999",
+                desc: "Company + GST + MSME + Consultancy",
+              },
+              {
+                name: "MSME & IEC Duo",
+                price: "₹2,499",
+                desc: "Perfect for small businesses & exporters",
+              },
+              {
+                name: "Complete Compliance Kit",
+                price: "₹8,999",
+                desc: "Company + GST + Annual Filings",
+              },
+            ].map((pack, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.05 }}
+                className="bg-white p-6 rounded-2xl shadow-lg"
+              >
+                <h3 className="text-xl font-semibold mb-2">{pack.name}</h3>
+                <p className="text-emerald-600 font-bold text-2xl mb-2">
+                  {pack.price}
+                </p>
+                <p className="text-gray-600">{pack.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-6">
+            {[
+              {
+                q: "How long does company registration take?",
+                a: "Typically, it takes 5-7 working days depending on document submission and approval timelines.",
+              },
+              {
+                q: "What documents are required for GST registration?",
+                a: "PAN, Aadhaar, business proof, and bank details are the essentials. We’ll assist you with everything.",
+              },
+              {
+                q: "Can I convert my business later?",
+                a: "Yes, we offer services for business structure transitions, such as OPC to Pvt Ltd or LLP.",
+              },
+            ].map((faq, i) => (
+              <div key={i} className="border-b pb-4">
+                <h3 className="font-semibold text-lg">{faq.q}</h3>
+                <p className="text-gray-600 mt-2">{faq.a}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Media & Press Mentions */}
+      {/* <section className="py-20 bg-gray-50">
+  <div className="max-w-6xl mx-auto px-6 text-center">
+    <h2 className="text-3xl font-bold mb-10">Featured In</h2>
+    <div className="flex flex-wrap items-center justify-center gap-10">
+      {["/partner3.jpg", "/partner3.jpg", "/partner3.jpg", "/partner3.jpg"].map((logo, i) => (
+        <img
+          key={i}
+          src={logo}
+          alt="Media Logo"
+          className="h-12 grayscale hover:grayscale-0 transition"
+        />
+      ))}
+    </div>
+  </div>
+</section> */}
+
+      {/* Partners & Affiliates */}
+      {/* Partners Section */}
+      <section className="py-20 bg-white text-center overflow-hidden">
+        <h2 className="text-3xl font-bold text-gray-800 mb-10">
+          Our Trusted Partners
+        </h2>
+        <div className="relative w-full overflow-hidden">
+          <div className="flex gap-16 animate-scroll whitespace-nowrap">
+            {[
+              "/partner1.jpg",
+              "/partner2.jpg",
+              "/partner3.jpg",
+              "/partner4.png",
+              "/partner5.jpg",
+              "/partner6.jpg",
+              "/partner7.jpg",
+              "/partner8.jpg",
+              "/partner9.jpg",
+              "/partner10.jpg",
+              // Repeating for seamless loop
+              "/partner1.jpg",
+              "/partner2.jpg",
+              "/partner3.jpg",
+              "/partner4.png",
+            ].map((src, idx) => (
+              <img
+                key={idx}
+                src={src}
+                alt={`Partner ${idx + 1}`}
+                className="h-24 w-auto object-contain"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-20 bg-emerald-600 text-white text-center px-6">
+        <h2 className="text-3xl font-bold mb-4">
+          Ready to Start Your Business Journey?
+        </h2>
+        <p className="mb-8 text-lg">
+          Get in touch with our experts today and take the first step towards
+          growth!
+        </p>
+        <button
+          onClick={() => router.push("/contact")}
+          className="bg-white text-emerald-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition cursor-pointer"
+        >
+          Contact Us
+        </button>
+      </section>
+
+      {/* Newsletter Signup */}
+      {/* <section className="py-20 bg-gray-900 text-white text-center">
+        <div className="max-w-xl mx-auto px-4">
+          <h2 className="text-3xl font-bold">Stay Updated</h2>
+          <p className="mt-4 text-lg">
+            Subscribe to our newsletter for legal & startup insights.
+          </p>
+          <form className="mt-6 flex flex-col sm:flex-row gap-4">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-1 px-4 py-3 rounded-md text-black focus:outline-none bg-white"
+            />
+            <button
+              type="submit"
+              className="bg-emerald-500 hover:bg-emerald-600 px-6 py-3 rounded-md text-white cursor-pointer"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section> */}
+
+      {/* Footer Addition */}
+      {/*       
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8 text-sm">
+          <div>
+            <h4 className="font-semibold mb-4">Company</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="/about">About Us</a>
+              </li>
+              <li>
+                <a href="/contact">Contact</a>
+              </li>
+              <li>
+                <a href="/privacy-policy">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="/terms">Terms & Conditions</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-4">Registrations</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="/register/private-limited-company">Private Ltd</a>
+              </li>
+              <li>
+                <a href="/register/one-person-company">OPC</a>
+              </li>
+              <li>
+                <a href="/register/msme">MSME</a>
+              </li>
+              <li>
+                <a href="/register/gst">GST</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-4">Certifications</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="/register/iso">ISO</a>
+              </li>
+              <li>
+                <a href="/register/fssai">FSSAI</a>
+              </li>
+              <li>
+                <a href="/register/iec">IEC</a>
+              </li>
+              <li>
+                <a href="/register/psara">PSARA</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-4">Contact</h4>
+            <p>📍 Delhi, India</p>
+            <p>📞 +91-99996 44807</p>
+            <p>✉️ support@dostartup.in</p>
+          </div>
+        </div>
+      </footer> */}
     </div>
   );
 }

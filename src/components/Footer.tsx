@@ -102,14 +102,14 @@ const socialLinks = [
 ];
 
 const bottomLinks = [
-  { text: 'ABOUT US', href: '/about' },
-  { text: 'PAY NOW', href: '/pay' },
-  { text: 'LEARNING', href: '/learning' },
-  { text: 'PRIVACY POLICY', href: '/privacy' },
-  { text: 'REFUND POLICY', href: '/refund' },
-  { text: 'TERMS & CONDITIONS', href: '/terms' },
-  { text: 'SITEMAP', href: '/sitemap' },
-  { text: 'CONTACT US', href: '/contact' },
+  { text: 'About Us', href: '/about' },
+  { text: 'Pay Now', href: '/pay' },
+  { text: 'Learning', href: '/learning' },
+  { text: 'Privacy Policy', href: '/privacy' },
+  { text: 'Refund Policy', href: '/refund' },
+  { text: 'Terms & Conditions', href: '/terms' },
+  { text: 'Sitemap', href: '/sitemap' },
+  { text: 'Contact Us', href: '/contact' },
 ];
 
 const policyLinks = [
@@ -122,74 +122,88 @@ const policyLinks = [
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-800 text-white text-sm">
-      {/* Top Footer Links */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 p-8 max-w-7xl mx-auto">
-        {footerSections.map((section) => (
-          <div key={section.title}>
-            <h3 className="text-orange-500 font-bold mb-4">{section.title}</h3>
-            <ul className="space-y-2">
-              {section.links.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="hover:text-orange-400 transition-colors duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-      {/* Social Media + Nav Links */}
-      <div className="bg-[#F5A623] flex flex-col md:flex-row justify-between items-center px-6 py-4 text-[#06144E] font-medium">
-        <div className="flex gap-4 mb-3 md:mb-0">
-          {socialLinks.map(({ Icon, url, label }) => (
-            <a
-              key={label}
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="hover:text-blue-800 transition-colors duration-200 text-lg"
-            >
-              <Icon />
-            </a>
+    <footer className="bg-slate-900 text-white">
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Links Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {footerSections.map((section) => (
+            <div key={section.title} className="space-y-4">
+              <h3 className="text-lg font-bold text-orange-500 uppercase tracking-wider">
+                {section.title}
+              </h3>
+              <ul className="space-y-3">
+                {section.links.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      className="text-gray-300 hover:text-orange-400 transition-colors duration-200"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
-        <nav className="flex flex-wrap gap-4 justify-center">
-          {bottomLinks.map((link) => (
-            <a
-              key={link.text}
-              href={link.href}
-              className="hover:text-blue-800 transition-colors duration-200"
-            >
-              {link.text}
-            </a>
-          ))}
-        </nav>
-      </div>
 
-      {/* Bottom disclaimer */}
-      <div className="text-center text-xs text-gray-300 px-4 pb-4 mt-5">
-        By continuing past this page, you agree to our{' '}
-        {policyLinks.map((policy, idx) => (
-          <span key={policy.text}>
-            <a
-              href={policy.href}
-              className="text-orange-500 hover:text-orange-400 underline"
-            >
-              {policy.text}
-            </a>
-            {idx < policyLinks.length - 1 && ', '}
-          </span>
-        ))}
-        .
-        <br />
-        © 2025 - DoStartup Private Limited. All rights reserved.
+        {/* Divider */}
+        <div className="border-t border-gray-700 my-10"></div>
+
+        {/* Social and Navigation */}
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          {/* Social Links */}
+          <div className="flex space-x-6 mb-6 md:mb-0">
+            {socialLinks.map(({ Icon, url, label }) => (
+              <a
+                key={label}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="text-gray-400 hover:text-orange-400 transition-colors duration-200"
+              >
+                <Icon className="h-5 w-5" />
+              </a>
+            ))}
+          </div>
+
+          {/* Navigation Links */}
+          <nav className="flex flex-wrap justify-center gap-4 md:gap-6">
+            {bottomLinks.map((link) => (
+              <a
+                key={link.text}
+                href={link.href}
+                className="text-gray-300 hover:text-orange-400 transition-colors duration-200 text-sm font-medium"
+              >
+                {link.text}
+              </a>
+            ))}
+          </nav>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-gray-700 my-8"></div>
+
+        {/* Policies and Copyright */}
+        <div className="text-center text-gray-400 text-sm">
+          <div className="mb-4">
+            By continuing past this page, you agree to our{' '}
+            {policyLinks.map((policy, idx) => (
+              <span key={policy.text}>
+                <a
+                  href={policy.href}
+                  className="text-orange-400 hover:underline"
+                >
+                  {policy.text}
+                </a>
+                {idx < policyLinks.length - 1 && ', '}
+              </span>
+            ))}
+          </div>
+          <p>© {new Date().getFullYear()} DoStartup Private Limited. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );
