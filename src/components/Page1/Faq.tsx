@@ -14,11 +14,11 @@ interface FAQ {
   answer: string;
 }
 
-interface Testimonial {
-  name: string;
-  title: string;
-  feedback: string;
-}
+// interface Testimonial {
+//   name: string;
+//   title: string;
+//   feedback: string;
+// }
 
 const services: Service[] = [
   {
