@@ -1,46 +1,84 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
-const Documentation = () => {
+interface Document {
+  heading: string;
+  content: string;
+}
+
+interface DocumentationProps {
+  documents?: Document[];
+}
+
+const Documentation: React.FC<DocumentationProps> = ({ documents = [] }) => {
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  });
+
+  if (documents.length === 0) {
+    return null;
+  }
+
   return (
-    <div className="space-y-6 mt-8">
-      <section>
-        <h2 className="text-xl font-semibold">Who Needs an FSSAI State License?</h2>
-        <p className="text-gray-700 mt-2">
-          Businesses with a medium-sized operation in food manufacturing, processing, packaging, storage, distribution, or sales need to obtain an FSSAI State License. In particular, this license is required for businesses that belong to the following categories:
-        </p>
-        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
-          <li>Businesses operating in a single state and generating an annual turnover of more than Rs 12 lacs and less than Rs 20 Crores.</li>
-          <li>Facility dealing with Proprietary foods.</li>
-          <li>Vegetable oil production & processing facility using the process of solvent extraction meeting the above turnover criteria.</li>
-          <li>Hotels having a 4-star rating or less.</li>
-          <li>Facilities dealing with dairy products, Milk Chilling Units having production capacity ranging from 500 to 50000 lit.</li>
-          <li>Storages possess an overall capacity of less than 50,000 metric tons yearly.</li>
-          <li>A slaughterhouse having a capacity of more than 2 & up to 50 large animals... or up to 1000 poultry birds.</li>
-          <li>All food processing facilities, including re-packing units, with a per-day capacity of not less than 100kg/l to up to 2 metric tons.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2 className="text-xl font-semibold">Documents Required to Obtain FSSAI State License</h2>
-        <p className="text-gray-700 mt-2 italic">
-          Following are the Documents that one to arrange to apply for a state FSSAI license:
-        </p>
-        <p className="text-gray-700 mt-1">
-          <strong>Given below are the significant documents required to obtain FSSAI State License:</strong>
-        </p>
-        <ul className="list-disc list-inside text-gray-700 mt-2 space-y-1">
-          <li>Details of key management personnel with real address & contact particulars</li>
-          <li>Passport-sized photos of the individual seeking the license</li>
-          <li>Identification and address proof of the individual</li>
-          <li>Applicant&apos;s PAN card</li>
-          <li>Property ownership documents or rent agreement and NOC</li>
-          <li>Particulars on Raw material suppliers</li>
-          <li>Form B duly completed and authenticated</li>
-          <li>List of machinery installed at the facility</li>
-          <li>NOC accorded by the local Municipality</li>
-        </ul>
-      </section>
-    </div>
+    <motion.section
+      ref={ref}
+      id="documentation"
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { 
+          opacity: 1,
+          transition: { duration: 0.6, ease: "easeOut" }
+        }
+      }}
+      className="bg-white p-8 rounded-xl shadow-sm border border-gray-100"
+    >
+      {documents.map((document, index) => (
+        <motion.div 
+          key={index}
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { 
+            opacity: 1, 
+            y: 0,
+            transition: { delay: 0.2 + index * 0.1 }
+          } : { opacity: 0, y: 10 }}
+          className="mb-8 last:mb-0"
+        >
+          <h2 className="text-2xl font-bold text-[#1D293D] mb-4 relative inline-block">
+            <span className="relative z-10">{index + 1}. {document.heading}</span>
+            <motion.span 
+              initial={{ scaleX: 0 }}
+              animate={inView ? { 
+                scaleX: 1,
+                transition: { delay: 0.3 + index * 0.1, duration: 0.4 }
+              } : { scaleX: 0 }}
+              className="absolute bottom-0 left-0 w-full h-1 bg-[#7DD756]/40 z-0 origin-left"
+            />
+          </h2>
+          
+          <div className="space-y-3">
+            {document.content.split("\n").map((paragraph, i) => (
+              paragraph.trim() && (
+                <motion.p
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  animate={inView ? { 
+                    opacity: 1,
+                    transition: { delay: 0.4 + index * 0.1 + i * 0.05 }
+                  } : { opacity: 0 }}
+                  className="text-gray-700 leading-relaxed"
+                >
+                  {paragraph.trim()}
+                </motion.p>
+              )
+            ))}
+          </div>
+        </motion.div>
+      ))}
+    </motion.section>
   );
 };
 

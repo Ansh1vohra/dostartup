@@ -129,7 +129,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {footerSections.map((section) => (
             <div key={section.title} className="space-y-4">
-              <h3 className="text-lg font-bold text-orange-500 uppercase tracking-wider">
+              <h3 className="text-lg font-bold text-gray-100 uppercase tracking-wider">
                 {section.title}
               </h3>
               <ul className="space-y-3">

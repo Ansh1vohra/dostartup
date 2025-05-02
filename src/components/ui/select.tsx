@@ -1,8 +1,6 @@
-// import React, { useState } from "react";
-import React from "react";
+import React, { useState } from "react";
 
-// export const Select = ({ value, onValueChange, children }: {
-export const Select = ({ children }: {
+export const Select = ({ value, onValueChange, children }: {
   value?: string;
   onValueChange: (val: string) => void;
   children: React.ReactNode;

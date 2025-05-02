@@ -54,9 +54,9 @@ const Header = () => {
         {
           title: "FSSAI & Eating License",
           links: [
-            { name: "FSSAI License", href: "/startup/fssai-license" },
+            { name: "FSSAI License", href: "/" },
             { name: "FSSAI License Renewal", href: "/startup/fssai-renewal" },
-            { name: "FSSAI State License", href: "/startup/fssai-state" },
+            { name: "FSSAI State License", href: "fssai-state-license" },
             { name: "Eating House License", href: "/startup/eating-house" },
             { name: "Central FSSAI License", href: "/startup/fssai-central" },
             {
@@ -472,7 +472,7 @@ const Header = () => {
   return (
    
       <nav className="bg-slate-800 border-gray-200 text-white sticky top-0 z-50">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl py-6 p-4">
+        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
           <Link
             href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"

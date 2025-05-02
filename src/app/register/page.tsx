@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const registrationTypes = [
   { name: "Private Limited Company", slug: "private-limited-company", emoji: "🏢" },
