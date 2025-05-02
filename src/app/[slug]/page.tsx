@@ -89,26 +89,18 @@
 // }
 
 // app/[slug]/page.tsx
-"use client"; // Required since we're using hooks
+"use client"; // Still needed for client-side hooks
 
 import React from "react";
 import dynamic from "next/dynamic";
 import { useParams } from "next/navigation";
 import { pageContent, PageContentType } from "@/utils/pageContentDataPrimary";
 
-// Dynamic imports with loading states
-const Hero = dynamic(() => import("@/components/Page2/hero"), {
-  loading: () => <p>Loading Hero...</p>,
-});
-const LogoSlider = dynamic(() => import("@/components/Page2/LogoSlider"), {
-  loading: () => <p>Loading Logos...</p>,
-});
-const TalkToExpert = dynamic(() => import("@/components/Page2/TalkToExpert"), {
-  loading: () => <p>Loading Expert Section...</p>,
-});
-const Overview = dynamic(() => import("@/components/Page2/Overview"), {
-  loading: () => <p>Loading Overview...</p>,
-});
+// Dynamic imports
+const Hero = dynamic(() => import("@/components/Page2/hero"));
+const LogoSlider = dynamic(() => import("@/components/Page2/LogoSlider"));
+const TalkToExpert = dynamic(() => import("@/components/Page2/TalkToExpert"));
+const Overview = dynamic(() => import("@/components/Page2/Overview"));
 
 export default function Page() {
   const params = useParams();
@@ -136,4 +128,9 @@ export default function Page() {
       />
     </div>
   );
+}
+
+// Move this to a separate file if still having issues
+export async function generateStaticParams() {
+  return Object.keys(pageContent).map((slug) => ({ slug }));
 }
