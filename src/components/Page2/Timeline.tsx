@@ -218,6 +218,7 @@ const Timeline: React.FC<TimelineProps> = ({ timeline = [] }) => {
                   type={index === 1 ? 'email' : 'text'}
                   placeholder={placeholder}
                   className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D293D]"
+                  spellCheck="false"
                   required
                 />
               </motion.div>

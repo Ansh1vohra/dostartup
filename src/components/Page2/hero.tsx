@@ -272,6 +272,7 @@ const Hero: React.FC<HeroProps> = ({ title, description }) => {
                   type="text"
                   placeholder="Your Name"
                   className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#7DD756] focus:border-transparent transition-all duration-200"
+                  spellCheck="false"
                 />
                 <input
                   type="email"
