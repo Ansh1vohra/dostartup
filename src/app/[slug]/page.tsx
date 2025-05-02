@@ -54,9 +54,15 @@ const LogoSlider = dynamic(() => import("@/components/Page2/LogoSlider"));
 const TalkToExpert = dynamic(() => import("@/components/Page2/TalkToExpert"));
 const Overview = dynamic(() => import("@/components/Page2/Overview"));
 
-interface PageProps {
-  params: { slug: string }
-}
+// interface PageProps {
+//   params: { slug: string }
+// }
+
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
 
 export default async function Page2({ params }: PageProps) {
   const { slug } = params;
