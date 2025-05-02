@@ -146,7 +146,7 @@ export default function Features({ items }: FeaturesProps) {
   );
 }
 
-const FeatureCard = ({ item, index }: { item: FeatureItem; index: number }) => {
+const FeatureCard = ({ item }: { item: FeatureItem; index: number }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const rotateX = useMotionValue(0);

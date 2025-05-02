@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -61,6 +61,41 @@ const benefits: Benefit[] = [
   },
 ];
 
+// Create a separate component for each benefit card
+function BenefitCard({ benefit }: { benefit: Benefit }) {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (inView) controls.start("visible");
+  }, [inView, controls]);
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={fadeInUp}
+      className="min-h-[60vh] bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
+    >
+      <h3 className="text-2xl font-semibold text-[#1D293D] mb-4">{benefit.title}</h3>
+      <p className="text-gray-700 leading-relaxed text-lg">{benefit.content}</p>
+    </motion.div>
+  );
+}
+
 export default function PartnershipFirmRegistration() {
   const [progress, setProgress] = useState(0);
 
@@ -75,18 +110,6 @@ export default function PartnershipFirmRegistration() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
 
   return (
     <div className="flex flex-col md:flex-row bg-gray-50">
@@ -112,28 +135,9 @@ export default function PartnershipFirmRegistration() {
 
       {/* Right Panel */}
       <div className="md:w-2/3 p-6 space-y-24 mt-[100px]">
-        {benefits.map((b) => {
-          const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
-          const controls = useAnimation();
-
-          useEffect(() => {
-            if (inView) controls.start("visible");
-          }, [inView, controls]);
-
-          return (
-            <motion.div
-              key={b.id}
-              ref={ref}
-              initial="hidden"
-              animate={controls}
-              variants={fadeInUp}
-              className="min-h-[60vh] bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
-            >
-              <h3 className="text-2xl font-semibold text-[#1D293D] mb-4">{b.title}</h3>
-              <p className="text-gray-700 leading-relaxed text-lg">{b.content}</p>
-            </motion.div>
-          );
-        })}
+        {benefits.map((benefit) => (
+          <BenefitCard key={benefit.id} benefit={benefit} />
+        ))}
       </div>
     </div>
   );

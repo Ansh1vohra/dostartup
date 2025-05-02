@@ -1,13 +1,13 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+// import React, { useState, useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-interface CompanyLogo {
-  id: number;
-  name: string;
-  logoUrl: string;
-}
+// interface CompanyLogo {
+//   id: number;
+//   name: string;
+//   logoUrl: string;
+// }
 
 const logos = [
   "https://corpbiz.io/admin/style/images/builder/20180628020904_stripe.jpg",

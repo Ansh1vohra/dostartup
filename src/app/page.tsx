@@ -222,6 +222,15 @@ export default function Home() {
               </div>
             </form>
           </motion.div>
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            onClick={scrollToProcess}
+            className="mt-8 text-white border-2 border-emerald-500 px-6 py-3 rounded-full hover:bg-emerald-500 transition-all duration-300"
+          >
+            Learn How It Works ↓
+          </motion.button>
         </motion.div>
       </section>
 
@@ -374,7 +383,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold mb-4">What Our Clients Say</h2>
           <p className="text-gray-300 mb-12 max-w-3xl mx-auto">
-            Don't just take our word for it. See what our clients have to say
+            Don&apos;t just take our word for it. See what our clients have to say
             about our services.
           </p>
           <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-3">
@@ -407,7 +416,7 @@ export default function Home() {
                 className="bg-gray-800 shadow-lg rounded-xl p-6 text-left relative"
               >
                 <div className="absolute -top-6 left-6 text-5xl text-emerald-500">
-                  "
+                &quot;
                 </div>
                 <p className="text-gray-300 mb-6 pt-4">{testimonial.quote}</p>
                 <div className="flex items-center">
@@ -432,13 +441,13 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-gray-800 mb-6">Who We Are</h2>
           <p className="mt-4 text-lg text-gray-600">
-            At DoStartup, we're dedicated to simplifying legal compliance and
+            At DoStartup, we&apos;re dedicated to simplifying legal compliance and
             registration processes for startups and small businesses. Our
             platform offers expert guidance and seamless services to help you
             grow your business with confidence.
           </p>
           <p className="mt-4 text-lg text-gray-600">
-            With a team of experienced legal and business consultants, we've
+            With a team of experienced legal and business consultants, we&apos;ve
             helped over 2000 businesses navigate the complex world of
             regulations and compliance.
           </p>
@@ -455,7 +464,7 @@ export default function Home() {
               <div className="text-3xl text-emerald-500 mb-2">👁️</div>
               <h3 className="text-xl font-semibold mb-2">Our Vision</h3>
               <p className="text-gray-600">
-                To become India's most trusted business compliance partner for
+                To become India&apos;s most trusted business compliance partner for
                 startups and SMEs.
               </p>
             </div>
