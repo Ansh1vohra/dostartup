@@ -346,6 +346,7 @@ const Overview: React.FC<OverviewProps> = ({
               <input
                 type="text"
                 placeholder="Your Name"
+                spellCheck="false"
                 className="w-full border border-gray-200 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7DD756] focus:border-transparent transition-all"
               />
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
