@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 
-const heroImages = ["/hero4.jpg", "/hero5.jpg", "/hero6.jpg"];
+const heroImages = ["/hero5.jpg", "/hero4.jpg", "/hero6.jpg"];
 
 const services = [
   {
@@ -630,7 +630,7 @@ export default function Home() {
       </section>
 
       {/* Popular Registration Packages */}
-      <section className="py-20 bg-gray-50">
+      {/* <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4">
@@ -722,7 +722,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FAQs - Enhanced */}
       <section className="py-20 bg-gradient-to-b from-white to-emerald-50">

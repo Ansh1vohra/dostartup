@@ -137,7 +137,7 @@ const Footer: React.FC = () => {
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-gray-300 hover:text-orange-400 transition-colors duration-200"
+                      className="text-gray-300 hover:text-emerald-400 transition-colors duration-200"
                     >
                       {link.name}
                     </a>
@@ -162,7 +162,7 @@ const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="text-gray-400 hover:text-orange-400 transition-colors duration-200"
+                className="text-gray-400 hover:text-emerald-400 transition-colors duration-200"
               >
                 <Icon className="h-5 w-5" />
               </a>
@@ -175,7 +175,7 @@ const Footer: React.FC = () => {
               <a
                 key={link.text}
                 href={link.href}
-                className="text-gray-300 hover:text-orange-400 transition-colors duration-200 text-sm font-medium"
+                className="text-gray-300 hover:text-emerald-400 transition-colors duration-200 text-sm font-medium"
               >
                 {link.text}
               </a>
@@ -194,7 +194,7 @@ const Footer: React.FC = () => {
               <span key={policy.text}>
                 <a
                   href={policy.href}
-                  className="text-orange-400 hover:underline"
+                  className="text-emerald-400 hover:underline"
                 >
                   {policy.text}
                 </a>

@@ -44,6 +44,7 @@
 // };
 
 // export default Page2;
+
 import React from "react";
 import dynamic from "next/dynamic";
 import { pageContent, PageContentType } from "@/utils/pageContentDataPrimary";
@@ -53,11 +54,11 @@ const LogoSlider = dynamic(() => import("@/components/Page2/LogoSlider"));
 const TalkToExpert = dynamic(() => import("@/components/Page2/TalkToExpert"));
 const Overview = dynamic(() => import("@/components/Page2/Overview"));
 
-export default async function Page2({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+interface PageProps {
+  params: { slug: string }
+}
+
+export default async function Page2({ params }: PageProps) {
   const { slug } = await params;
   const currentPage = pageContent[slug] as PageContentType | undefined;
 
