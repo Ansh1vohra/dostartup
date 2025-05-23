@@ -33,7 +33,6 @@ const BusinessRegistrationForm: React.FC<Props> = ({ prefillType }) => {
   });
 
   useEffect(() => {
-    console.log(selectedType);
     if (prefillType) {
       setFormData((prev) => ({ ...prev, registrationType: prefillType }));
     }
