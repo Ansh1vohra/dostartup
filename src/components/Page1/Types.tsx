@@ -350,12 +350,12 @@ export default function Types({ data }: TypesProps) {
             title={card.title}
             shortText={card.shortText}
             backText={card.backText}
-            accentColor="#7AD955"
-            textColor="#1D293D"
-            className="border border-gray-200/50 hover:border-[#7AD955]/30 transition-all duration-300"
-            frontClassName="bg-gradient-to-br from-white to-gray-50"
-            backClassName="bg-gradient-to-br from-[#1D293D] to-gray-900 text-white"
-            icon={<AlertTriangle className="w-6 h-6 text-[#7AD955]" />}
+            // accentColor="#7AD955"
+            // textColor="#1D293D"
+            // className="border border-gray-200/50 hover:border-[#7AD955]/30 transition-all duration-300"
+            // frontClassName="bg-gradient-to-br from-white to-gray-50"
+            // backClassName="bg-gradient-to-br from-[#1D293D] to-gray-900 text-white"
+            // icon={<AlertTriangle className="w-6 h-6 text-[#7AD955]" />}
           />
           
           {/* Decorative glow effect */}

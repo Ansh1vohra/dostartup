@@ -11,6 +11,7 @@ const Header = () => {
   const [openSubItem, setOpenSubItem] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     if (!isMenuOpen) {
@@ -28,16 +29,17 @@ const Header = () => {
     setOpenSubItem(openSubItem === item ? null : item);
   };
 
+  // Close all menus
+  const closeAllMenus = () => {
+    setIsMenuOpen(false);
+    setOpenMainItem(null);
+    setOpenSubItem(null);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        isMenuOpen &&
-        menuRef.current &&
-        !menuRef.current.contains(event.target as Node)
-      ) {
-        setIsMenuOpen(false);
-        setOpenMainItem(null);
-        setOpenSubItem(null);
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        closeAllMenus();
       }
     };
 
@@ -45,7 +47,7 @@ const Header = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isMenuOpen]);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,7 +56,7 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  // Menu items data structure
+
   const menuItems = [
     {
       title: "Startup",
@@ -63,8 +65,8 @@ const Header = () => {
           title: "FSSAI & Eating License",
           links: [
             { name: "FSSAI License", href: "/" },
-            { name: "FSSAI License Renewal", href: "/second/fssai-license-renewal" },
-            { name: "FSSAI State License", href: "fssai-state-license" },
+            { name: "FSSAI License Renewal", href: "/service/fssai-license-renewal" },
+            { name: "FSSAI State License", href: "/fssai-state-license" },
             { name: "Eating House License", href: "/startup/eating-house" },
             { name: "Central FSSAI License", href: "/startup/fssai-central" },
             {
@@ -428,7 +430,7 @@ const Header = () => {
           title: "GST",
           description: "Goods and Services Tax services",
           links: [
-            { name: "GST Registration", href: "/second/gst-registration" },
+            { name: "GST Registration", href: "/service/gst-registration" },
             { name: "GST Filing", href: "/tax/gst-filing" },
           ],
         },
@@ -477,64 +479,201 @@ const Header = () => {
     },
   ];
 
+
   return (
-   
-      <nav className="bg-slate-800 border-gray-200 text-white sticky top-0 z-50">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-          <Link
-            href="/"
-            className="flex items-center space-x-3 rtl:space-x-reverse"
+    <nav className="bg-slate-800 border-gray-200 text-white sticky top-0 z-50" ref={menuRef}>
+      <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+        <Link
+          href="/"
+          className="flex items-center space-x-3 rtl:space-x-reverse"
+          onClick={closeAllMenus}
+        >
+          <Image
+            src={Logo}
+            width={55}
+            height={55}
+            alt="DoStartup Logo"
+            className="h-8"
+          />
+          <span className="self-center text-2xl font-semibold whitespace-nowrap">
+            DoStartup
+          </span>
+        </Link>
+
+        {/* Mobile menu button */}
+        <button
+          onClick={toggleMenu}
+          type="button"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500"
+          aria-controls="mega-menu"
+          aria-expanded={isMenuOpen}
+        >
+          <span className="sr-only">Open main menu</span>
+          <svg
+            className="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 17 14"
           >
-            <Image
-              src={Logo}
-              width={55}
-              height={55}
-              alt="DoStartup Logo"
-              className="h-8"
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M1 1h15M1 7h15M1 13h15"
             />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap">
-              DoStartup
-            </span>
-          </Link>
+          </svg>
+        </button>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={toggleMenu}
-            type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500"
-            aria-controls="mega-menu"
-            aria-expanded={isMenuOpen}
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          </button>
+        {/* Desktop Navigation */}
+        <div
+          id="mega-menu"
+          className="items-center justify-between hidden w-full md:flex md:w-auto"
+        >
+          <ul className="flex flex-col p-4 md:p-0 mt-4 border border-gray-700 rounded-lg bg-slate-800 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+            {menuItems.map((item, index) => (
+              <li key={index} className="relative group">
+                {item.href ? (
+                  <Link
+                    href={item.href}
+                    className="block py-2 px-3 rounded cursor-pointer hover:bg-slate-700 md:hover:bg-transparent md:hover:text-emerald-300 md:p-0"
+                    onClick={closeAllMenus}
+                  >
+                    {item.title}
+                  </Link>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => toggleMainItem(item.title)}
+                      className="flex items-center cursor-pointer justify-between w-full py-2 px-3 rounded hover:bg-slate-700 md:hover:bg-transparent md:border-0 md:hover:text-emerald-300 md:p-0 md:w-auto"
+                    >
+                      {item.title}
+                      <svg
+                        className="w-2.5 h-2.5 ms-2.5"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 10 6"
+                      >
+                        <path
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="m1 1 4 4 4-4"
+                        />
+                      </svg>
+                    </button>
 
-          {/* Desktop Navigation */}
-          <div
-            id="mega-menu"
-            className="items-center justify-between hidden w-full md:flex md:w-auto"
-          >
-            <ul className="flex flex-col p-4 md:p-0 mt-4 border border-gray-700 rounded-lg bg-slate-800 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+                    {/* Desktop Dropdown - First Level */}
+                    {openMainItem === item.title && (
+                      <div className="fixed inset-0 z-20 pointer-events-none">
+                        {/* Menu container */}
+                        <div
+                          className="fixed inset-x-0 top-16 bg-slate-800 border-b border-gray-700 shadow-lg z-30 pointer-events-auto"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <div className="container mx-auto flex h-[70vh]">
+                            {/* First Level - Left Side (Vertical) */}
+                            <div className="w-1/4 bg-slate-800 border-r border-gray-700 overflow-y-auto">
+                              <ul className="py-4">
+                                {item.subItems?.map((subItem, subIndex) => (
+                                  <li key={subIndex}>
+                                    <button
+                                      onClick={() =>
+                                        toggleSubItem(
+                                          `${item.title}-${subItem.title}`
+                                        )
+                                      }
+                                      className={`flex justify-between cursor-pointer items-center w-full px-6 py-3 hover:bg-slate-700 hover:text-emerald-300 text-left ${
+                                        openSubItem ===
+                                        `${item.title}-${subItem.title}`
+                                          ? "bg-slate-700 text-emerald-300"
+                                          : ""
+                                      }`}
+                                    >
+                                      {subItem.title}
+                                      {subItem.links && (
+                                        <svg
+                                          className="w-3 h-3 ms-2.5"
+                                          aria-hidden="true"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          fill="none"
+                                          viewBox="0 0 10 6"
+                                        >
+                                          <path
+                                            stroke="currentColor"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="m1 1 4 4 4-4"
+                                          />
+                                        </svg>
+                                      )}
+                                    </button>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+
+                            {/* Second Level - Right Side (Horizontal) */}
+                            <div className="w-3/4 bg-slate-800 p-6 overflow-x-auto">
+                              {item.subItems?.map(
+                                (subItem) =>
+                                  openSubItem ===
+                                    `${item.title}-${subItem.title}` &&
+                                  subItem.links && (
+                                    <div
+                                      key={subItem.title}
+                                      className="flex flex-wrap gap-3"
+                                    >
+                                      {subItem.links.map(
+                                        (link, linkIndex) => (
+                                          <div
+                                            key={linkIndex}
+                                            className="flex-shrink-0 w-64 hover:bg-slate-900 transition-colors px-2 py-1"
+                                          >
+                                            <Link
+                                              href={link.href}
+                                              className="block"
+                                              onClick={closeAllMenus}
+                                            >
+                                              <h4 className="font-medium text-emerald-400">
+                                                {link.name}
+                                              </h4>
+                                            </Link>
+                                          </div>
+                                        )
+                                      )}
+                                    </div>
+                                  )
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden">
+          <div className="px-4 py-2 border-t border-gray-700 bg-slate-800">
+            <ul className="space-y-1">
               {menuItems.map((item, index) => (
-                <li key={index} className="relative group">
+                <li key={index}>
                   {item.href ? (
                     <Link
                       href={item.href}
-                      className="block py-2 px-3 rounded cursor-pointer hover:bg-slate-700 md:hover:bg-transparent md:hover:text-emerald-300 md:p-0"
+                      className="block py-2 px-3 rounded hover:bg-slate-700"
+                      onClick={closeAllMenus}
                     >
                       {item.title}
                     </Link>
@@ -542,11 +681,13 @@ const Header = () => {
                     <>
                       <button
                         onClick={() => toggleMainItem(item.title)}
-                        className="flex items-center cursor-pointer justify-between w-full py-2 px-3 rounded hover:bg-slate-700 md:hover:bg-transparent md:border-0 md:hover:text-emerald-300 md:p-0 md:w-auto"
+                        className="flex items-center justify-between w-full py-2 px-3 rounded hover:bg-slate-700 text-left"
                       >
                         {item.title}
                         <svg
-                          className="w-2.5 h-2.5 ms-2.5"
+                          className={`w-2.5 h-2.5 ms-2.5 transition-transform ${
+                            openMainItem === item.title ? "rotate-180" : ""
+                          }`}
                           aria-hidden="true"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
@@ -562,94 +703,68 @@ const Header = () => {
                         </svg>
                       </button>
 
-                      {/* Desktop Dropdown - First Level */}
+                      {/* Mobile Dropdown - First Level */}
                       {openMainItem === item.title && (
-                        <div className="fixed inset-0 z-20 pointer-events-none">
-                          {/* Menu container */}
-                          <div
-                            className="fixed inset-x-0 top-16 bg-slate-800 border-b border-gray-700 shadow-lg z-30 pointer-events-auto"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <div className="container mx-auto flex h-[70vh]">
-                              {/* First Level - Left Side (Vertical) */}
-                              <div className="w-1/4 bg-slate-800 border-r border-gray-700 overflow-y-auto">
-                                <ul className="py-4">
-                                  {item.subItems?.map((subItem, subIndex) => (
-                                    <li key={subIndex}>
-                                      <button
-                                        onClick={() =>
-                                          toggleSubItem(
-                                            `${item.title}-${subItem.title}`
-                                          )
-                                        }
-                                        className={`flex justify-between cursor-pointer items-center w-full px-6 py-3 hover:bg-slate-700 hover:text-emerald-300 text-left ${
-                                          openSubItem ===
-                                          `${item.title}-${subItem.title}`
-                                            ? "bg-slate-700 text-emerald-300"
-                                            : ""
-                                        }`}
-                                      >
-                                        {subItem.title}
-                                        {subItem.links && (
-                                          <svg
-                                            className="w-3 h-3 ms-2.5"
-                                            aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 10 6"
-                                          >
-                                            <path
-                                              stroke="currentColor"
-                                              strokeLinecap="round"
-                                              strokeLinejoin="round"
-                                              strokeWidth="2"
-                                              d="m1 1 4 4 4-4"
-                                            />
-                                          </svg>
-                                        )}
-                                      </button>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-
-                              {/* Second Level - Right Side (Horizontal) */}
-                              <div className="w-3/4 bg-slate-800 p-6 overflow-x-auto">
-                                {item.subItems?.map(
-                                  (subItem) =>
-                                    openSubItem ===
-                                      `${item.title}-${subItem.title}` &&
-                                    subItem.links && (
-                                      <div
-                                        key={subItem.title}
-                                        className="flex flex-wrap gap-3"
-                                      >
-                                        {subItem.links.map(
-                                          (link, linkIndex) => (
-                                            <div
-                                              key={linkIndex}
-                                              className="flex-shrink-0 w-64 hover:bg-slate-900 transition-colors px-2 py-1"
-                                            >
-                                              <Link
-                                                href={link.href}
-                                                className="block"
-                                              >
-                                                <h4 className="font-medium text-emerald-400">
-                                                  {link.name}
-                                                </h4>
-                                                {/* {link.description && (
-                                            <p className="text-sm text-gray-300 mt-2">{link.description}</p>
-                                          )} */}
-                                              </Link>
-                                            </div>
-                                          )
-                                        )}
-                                      </div>
-                                    )
+                        <div className="ml-4 mt-1 space-y-1">
+                          {item.subItems?.map((subItem, subIndex) => (
+                            <div key={subIndex}>
+                              <button
+                                onClick={() =>
+                                  toggleSubItem(
+                                    `${item.title}-${subItem.title}`
+                                  )
+                                }
+                                className="flex items-center justify-between w-full px-3 py-2 rounded hover:bg-slate-700 text-left"
+                              >
+                                {subItem.title}
+                                {subItem.links && (
+                                  <svg
+                                    className={`w-2.5 h-2.5 ms-2.5 transition-transform ${
+                                      openSubItem ===
+                                      `${item.title}-${subItem.title}`
+                                        ? "rotate-180"
+                                        : ""
+                                    }`}
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 10 6"
+                                  >
+                                    <path
+                                      stroke="currentColor"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth="2"
+                                      d="m1 1 4 4 4-4"
+                                    />
+                                  </svg>
                                 )}
-                              </div>
+                              </button>
+
+                              {/* Mobile Dropdown - Second Level */}
+                              {openSubItem ===
+                                `${item.title}-${subItem.title}` &&
+                                subItem.links && (
+                                  <div className="ml-4 mt-1 space-y-1">
+                                    <ul className="max-h-60 overflow-y-auto">
+                                      {subItem.links.map(
+                                        (link, linkIndex) => (
+                                          <li key={linkIndex}>
+                                            <Link
+                                              href={link.href}
+                                              className="block px-3 py-2 rounded hover:bg-slate-700 text-sm"
+                                              onClick={closeAllMenus}
+                                            >
+                                              {link.name}
+                                            </Link>
+                                          </li>
+                                        )
+                                      )}
+                                    </ul>
+                                  </div>
+                                )}
                             </div>
-                          </div>
+                          ))}
                         </div>
                       )}
                     </>
@@ -659,121 +774,8 @@ const Header = () => {
             </ul>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-4 py-2 border-t border-gray-700 bg-slate-800">
-              <ul className="space-y-1">
-                {menuItems.map((item, index) => (
-                  <li key={index}>
-                    {item.href ? (
-                      <Link
-                        href={item.href}
-                        className="block py-2 px-3 rounded hover:bg-slate-700"
-                        onClick={toggleMenu}
-                      >
-                        {item.title}
-                      </Link>
-                    ) : (
-                      <>
-                        <button
-                          onClick={() => toggleMainItem(item.title)}
-                          className="flex items-center justify-between w-full py-2 px-3 rounded hover:bg-slate-700 text-left"
-                        >
-                          {item.title}
-                          <svg
-                            className={`w-2.5 h-2.5 ms-2.5 transition-transform ${
-                              openMainItem === item.title ? "rotate-180" : ""
-                            }`}
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 10 6"
-                          >
-                            <path
-                              stroke="currentColor"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="m1 1 4 4 4-4"
-                            />
-                          </svg>
-                        </button>
-
-                        {/* Mobile Dropdown - First Level */}
-                        {openMainItem === item.title && (
-                          <div className="ml-4 mt-1 space-y-1">
-                            {item.subItems?.map((subItem, subIndex) => (
-                              <div key={subIndex}>
-                                <button
-                                  onClick={() =>
-                                    toggleSubItem(
-                                      `${item.title}-${subItem.title}`
-                                    )
-                                  }
-                                  className="flex items-center justify-between w-full px-3 py-2 rounded hover:bg-slate-700 text-left"
-                                >
-                                  {subItem.title}
-                                  {subItem.links && (
-                                    <svg
-                                      className={`w-2.5 h-2.5 ms-2.5 transition-transform ${
-                                        openSubItem ===
-                                        `${item.title}-${subItem.title}`
-                                          ? "rotate-180"
-                                          : ""
-                                      }`}
-                                      aria-hidden="true"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      fill="none"
-                                      viewBox="0 0 10 6"
-                                    >
-                                      <path
-                                        stroke="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="m1 1 4 4 4-4"
-                                      />
-                                    </svg>
-                                  )}
-                                </button>
-
-                                {/* Mobile Dropdown - Second Level */}
-                                {openSubItem ===
-                                  `${item.title}-${subItem.title}` &&
-                                  subItem.links && (
-                                    <div className="ml-4 mt-1 space-y-1">
-                                      <ul className="max-h-60 overflow-y-auto">
-                                        {subItem.links.map(
-                                          (link, linkIndex) => (
-                                            <li key={linkIndex}>
-                                              <Link
-                                                href={link.href}
-                                                className="block px-3 py-2 rounded hover:bg-slate-700 text-sm"
-                                                onClick={toggleMenu}
-                                              >
-                                                {link.name}
-                                              </Link>
-                                            </li>
-                                          )
-                                        )}
-                                      </ul>
-                                    </div>
-                                  )}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        )}
-      </nav>
+      )}
+    </nav>
   );
 };
 

@@ -8,11 +8,11 @@ const TalkToExpert = dynamic(() => import("@/components/Page2/TalkToExpert"));
 const Overview = dynamic(() => import("@/components/Page2/Overview"));
 
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export default async function Page2({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const currentPage = pageContent[slug] as PageContentType | undefined;
 
   if (!currentPage) {
@@ -37,8 +37,4 @@ export default async function Page2({ params }: PageProps) {
       />
     </div>
   );
-}
-
-export async function generateStaticParams() {
-  return Object.keys(pageContent).map((slug) => ({ slug }));
 }

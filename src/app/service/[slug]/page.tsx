@@ -13,11 +13,11 @@ const ServicesFaq    = dynamic(() => import('@/components/Page1/Faq'));
 const Types          = dynamic(() => import('@/components/Page1/Types'));
 
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
-export default function GstPage({ params }: PageProps) {
-  const { slug } = params;
+export default async function Page({ params }: PageProps) {
+  const { slug } = await params;
   const currentPage = pageContent[slug] as PageContentType | undefined;
 
   if (!currentPage) {
@@ -37,8 +37,4 @@ export default function GstPage({ params }: PageProps) {
       
     </div>
   );
-}
-
-export async function generateStaticParams() {
-  return Object.keys(pageContent).map((slug) => ({ slug }));
 }
