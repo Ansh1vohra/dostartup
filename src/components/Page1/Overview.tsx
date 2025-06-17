@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import Link from 'next/link';
 import { motion, useMotionTemplate, useMotionValue, animate, useTransform } from 'framer-motion';
 import { useRef } from 'react';
@@ -14,6 +14,12 @@ export interface OverviewProps {
 export default function Overview({ data }: OverviewProps) {
   const { heading, paragraphs} = data;
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   
   // Enhanced mouse tracking with smoother inertia
   const mouseX = useMotionValue(0);
@@ -48,15 +54,25 @@ export default function Overview({ data }: OverviewProps) {
   };
 
   // Enhanced particle system with varied properties
-  const particles = Array(30).fill(0).map((_, i) => ({
+  // Replace the random particle generation with deterministic values
+const particles = Array(30).fill(0).map((_, i) => {
+  // Use a seed based on the index for deterministic values
+  const seed = i * 1000;
+  const pseudoRandom = (max: number, min = 0) => {
+    const x = Math.sin(seed) * 10000;
+    return min + (x - Math.floor(x)) * (max - min);
+  };
+  
+  return {
     id: i,
-    size: Math.random() * 6 + 2,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    delay: Math.random() * 3,
-    opacity: Math.random() * 0.4 + 0.2,
-    color: `hsl(${Math.random() * 60 + 100}, 80%, 70%)`
-  }));
+    size: 2 + pseudoRandom(6), // Between 2-8
+    x: pseudoRandom(100), // 0-100%
+    y: pseudoRandom(100), // 0-100%
+    delay: pseudoRandom(3), // 0-3s
+    opacity: 0.2 + pseudoRandom(0.4), // 0.2-0.6
+    color: `hsl(${100 + pseudoRandom(60)}, 80%, 70%)` // hsl(100-160, 80%, 70%)
+  };
+});
 
   // More refined 3D tilt effect
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -100,26 +116,30 @@ export default function Overview({ data }: OverviewProps) {
         }} />
         
         {/* Floating particles with varied properties */}
-        {particles?.map((particle) => (
-          <motion.div
-            key={particle.id}
-            className="absolute rounded-full"
-            style={{
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              opacity: particle.opacity,
-              backgroundColor: particle.color,
-              filter: 'blur(1px)',
-              mixBlendMode: 'screen'
-            }}
-            variants={floatingVariants}
-            initial="float"
-            animate="float"
-            transition={{ delay: particle.delay }}
-          />
-        ))}
+        {isClient && (
+        <div className="absolute inset-0 overflow-hidden">
+          {particles?.map((particle) => (
+            <motion.div
+              key={particle.id}
+              className="absolute rounded-full"
+              style={{
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                left: `${particle.x}%`,
+                top: `${particle.y}%`,
+                opacity: particle.opacity,
+                backgroundColor: particle.color,
+                filter: 'blur(1px)',
+                mixBlendMode: 'screen'
+              }}
+              variants={floatingVariants}
+              initial="float"
+              animate="float"
+              transition={{ delay: particle.delay }}
+            />
+          ))}
+        </div>
+      )}
       </div>
 
       <div className="max-w-8xl mx-auto relative z-10">
