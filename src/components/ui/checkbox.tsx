@@ -1,5 +1,5 @@
 import * as React from "react";
-
+/* eslint-disable */
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(

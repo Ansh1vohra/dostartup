@@ -54,7 +54,7 @@ const project = () => {
       <div className="mt-10 flex items-center space-x-4">
         <Button className="bg-blue-600 text-white hover:bg-blue-700">Get Started</Button>
         <button className="text-sm text-gray-500 hover:underline">
-          Don't show this tab again.
+          Don&apos;t show this tab again.
         </button>
       </div>
     </div>

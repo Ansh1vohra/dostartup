@@ -37,7 +37,7 @@ const Dashboard: React.FC = () => {
                                 🔄
                             </button>
                             <select className="border rounded px-2 py-1 text-sm">
-                                <option>deepanshu varshney's Home</option>
+                                <option>deepanshu varshney&apos;s Home</option>
                             </select>
                             <button className="text-gray-500 hover:text-gray-800">⋮</button>
                         </div>

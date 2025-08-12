@@ -15,8 +15,6 @@ import { Search, Filter, PlusCircle, ChevronLeft, ChevronRight, MoreVertical } f
 import { Badge } from "@/components/ui/badge";
 import {
   DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Navbar from "../components/Navbar";
@@ -72,8 +70,7 @@ const Leads = () => {
           <p className="text-sm text-muted-foreground">View and manage all your leads in one place</p>
         </div>
         <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-          <Button 
-            variant="outline" 
+          <Button  
             className="gap-2 sm:hidden"
             onClick={() => setIsFilterOpen(!isFilterOpen)}
           >
@@ -101,7 +98,7 @@ const Leads = () => {
           <div className="space-y-4 p-4 border rounded-lg bg-white shadow-sm">
             <div className="flex justify-between items-center">
               <h4 className="font-medium text-sm">Filters</h4>
-              <Button variant="ghost" size="sm" className="text-primary text-xs h-6">
+              <Button className="text-primary text-xs h-6">
                 Reset
               </Button>
             </div>
@@ -208,7 +205,7 @@ const Leads = () => {
                         <TableCell>
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                              <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                              <Button  className="h-8 w-8 p-0">
                                 <MoreVertical className="h-4 w-4" />
                                 <span className="sr-only">Actions</span>
                               </Button>
@@ -234,11 +231,11 @@ const Leads = () => {
               <span className="font-medium text-gray-700">{leadsData.length}</span> leads
             </div>
             <div className="flex gap-2">
-              <Button variant="outline" size="sm" className="h-8 gap-1" disabled>
+              <Button className="h-8 gap-1" disabled>
                 <ChevronLeft className="h-3.5 w-3.5" />
                 <span className="sr-only sm:not-sr-only">Previous</span>
               </Button>
-              <Button variant="outline" size="sm" className="h-8 gap-1">
+              <Button className="h-8 gap-1">
                 <span className="sr-only sm:not-sr-only">Next</span>
                 <ChevronRight className="h-3.5 w-3.5" />
               </Button>

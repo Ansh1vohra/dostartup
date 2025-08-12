@@ -6,35 +6,35 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const heroImages = ["/hero5.jpg", "/hero4.jpg", "/hero6.jpg"];
 
-const services = [
-  {
-    title: "Private Limited Company Registration",
-    description:
-      "Get your company registered hassle-free with our expert guidance.",
-    image: "/private.jpg",
-    link: "/register/private-limited-company",
-  },
-  {
-    title: "One Person Company Registration",
-    description: "Register your OPC and enjoy limited liability benefits.",
-    image: "/opc.jpg",
-    link: "/register/one-person-company",
-  },
-  {
-    title: "MSME Registration",
-    description:
-      "Boost your business with MSME registration and avail government benefits.",
-    image: "/msme.jpg",
-    link: "/register/msme",
-  },
-  {
-    title: "GST Registration",
-    description:
-      "Get your GST number quickly and efficiently with our experts.",
-    image: "/gst.jpg",
-    link: "/register/gst",
-  },
-];
+// const services = [
+//   {
+//     title: "Private Limited Company Registration",
+//     description:
+//       "Get your company registered hassle-free with our expert guidance.",
+//     image: "/private.jpg",
+//     link: "/register/private-limited-company",
+//   },
+//   {
+//     title: "One Person Company Registration",
+//     description: "Register your OPC and enjoy limited liability benefits.",
+//     image: "/opc.jpg",
+//     link: "/register/one-person-company",
+//   },
+//   {
+//     title: "MSME Registration",
+//     description:
+//       "Boost your business with MSME registration and avail government benefits.",
+//     image: "/msme.jpg",
+//     link: "/register/msme",
+//   },
+//   {
+//     title: "GST Registration",
+//     description:
+//       "Get your GST number quickly and efficiently with our experts.",
+//     image: "/gst.jpg",
+//     link: "/register/gst",
+//   },
+// ];
 
 const processSteps = [
   {
