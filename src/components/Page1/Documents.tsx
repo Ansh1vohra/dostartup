@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Image from "next/image";
 
 export interface Step {
   title: string;
@@ -10,8 +11,8 @@ export interface Step {
 export interface DocumentsProps {
   data: {
     steps: Step[];
-    violations?: string[];
-    consequences?: string[];
+    violations: string[];
+    consequences: string[];
   };
 }
 
@@ -70,7 +71,6 @@ const SectionHeader = ({
 const StepItem = ({ step, index }: { step: Step; index: number }) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
-  
 
   useEffect(() => {
     if (inView) {
@@ -198,10 +198,9 @@ const Card = ({
 };
 
 export default function Documents({ data }: DocumentsProps) {
-  // const { steps, violations, consequences } = data;
+  const { steps, violations, consequences } = data;
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.1 });
-  const { steps, violations = [], consequences = [] } = data;
 
   useEffect(() => {
     if (inView) {
@@ -230,7 +229,9 @@ export default function Documents({ data }: DocumentsProps) {
             whileHover={{ scale: 1.01 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            <img
+            <Image
+            height={500}
+            width={500}
               src="https://corpbiz.io/img/steps_img.webp"
               alt="Form Fill"
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"

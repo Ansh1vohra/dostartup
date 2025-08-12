@@ -9,8 +9,8 @@ export interface FeatureItem {
 
 export interface FeaturesProps {
   items: FeatureItem[];
-  heading?: string;
-  subheading?: string;
+  heading: string;
+  subheading: string;
 }
 
 const containerVariants = {
@@ -145,3 +145,5 @@ const FeatureCard = ({ item }: { item: FeatureItem }) => {
     </motion.div>
   );
 };
+
+      

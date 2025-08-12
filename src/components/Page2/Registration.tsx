@@ -34,26 +34,27 @@ const Registration: React.FC<RegistrationProps> = ({ procedure = [] }) => {
   const registrationItem = procedure[0];
 
   return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={{
-        hidden: { opacity: 0 },
-        visible: { 
-          opacity: 1,
-          transition: { duration: 0.6, ease: "easeOut" }
-        }
-      }}
-      className="bg-white p-8 rounded-xl shadow-sm border border-gray-100"
-    >
-      {/* Registration Process Section */}
+  <motion.div
+    ref={ref}
+    initial="hidden"
+    animate={inView ? "visible" : "hidden"}
+    variants={{
+      hidden: { opacity: 0 },
+      visible: { 
+        opacity: 1,
+        transition: { duration: 0.6, ease: "easeOut" }
+      }
+    }}
+    className="bg-white p-8 rounded-xl shadow-sm border border-gray-100"
+  >
+    {procedure.map((registrationItem, idx) => (
       <motion.section
+        key={idx}
         initial={{ opacity: 0, y: 10 }}
         animate={inView ? { 
           opacity: 1, 
           y: 0,
-          transition: { delay: 0.2 }
+          transition: { delay: 0.2 + idx * 0.1 }
         } : { opacity: 0, y: 10 }}
         className="mb-8"
       >
@@ -63,13 +64,13 @@ const Registration: React.FC<RegistrationProps> = ({ procedure = [] }) => {
             initial={{ scaleX: 0 }}
             animate={inView ? { 
               scaleX: 1,
-              transition: { delay: 0.3, duration: 0.4 }
+              transition: { delay: 0.3 + idx * 0.1, duration: 0.4 }
             } : { scaleX: 0 }}
             className="absolute bottom-0 left-0 w-full h-1 bg-[#7DD756]/40 z-0 origin-left"
           />
         </h1>
         <div className="space-y-3">
-          {registrationItem.content.split('\n').map((step, index) => (
+          {registrationItem?.content?.split('\n').map((step, index) => (
             <motion.p
               key={index}
               initial={{ opacity: 0 }}
@@ -84,6 +85,7 @@ const Registration: React.FC<RegistrationProps> = ({ procedure = [] }) => {
           ))}
         </div>
       </motion.section>
+    ))}
 
       {/* Penalties Section */}
       {registrationItem.penalties?.description && (
@@ -97,7 +99,7 @@ const Registration: React.FC<RegistrationProps> = ({ procedure = [] }) => {
           className="mb-8"
         >
           <h2 className="text-xl font-bold text-[#1D293D] mb-4 relative inline-block">
-            <span className="relative z-10">Penalty for Not Complying with FSSAI's Norms</span>
+            <span className="relative z-10">Penalty for Not Complying with FSSAI&apos;s Norms</span>
             <motion.span 
               initial={{ scaleX: 0 }}
               animate={inView ? { 

@@ -217,7 +217,6 @@ const Timeline: React.FC<TimelineProps> = ({ timeline = [] }) => {
                 <input
                   type={index === 1 ? 'email' : 'text'}
                   placeholder={placeholder}
-                  spellCheck='false'
                   className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D293D]"
                   required
                 />

@@ -4,19 +4,20 @@ import React from "react";
 import { CheckCircle2, AlertTriangle, ArrowRight } from "lucide-react";
 import FlipCard from "@/components/FlipCard";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 // Add FlipCard props interface
-interface FlipCardProps {
-  title: string;
-  shortText: string;
-  backText: string;
-  accentColor?: string;
-  textColor?: string;
-  className?: string;
-  frontClassName?: string;
-  backClassName?: string;
-  icon?: React.ReactNode;
-}
+// interface FlipCardProps {
+//   title: string;
+//   shortText: string;
+//   backText: string;
+//   accentColor?: string;
+//   textColor?: string;
+//   className?: string;
+//   frontClassName?: string;
+//   backClassName?: string;
+//   icon?: React.ReactNode;
+// }
 
 export interface TypesData {
   cards: { title: string; shortText: string; backText: string }[];
@@ -70,7 +71,9 @@ export default function Types({ data }: TypesProps) {
               <div className="relative group">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#7AD955] to-[#1D293D] rounded-3xl opacity-30 blur-xl group-hover:opacity-40 transition-all duration-500" />
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform group-hover:-translate-y-1 transition-transform duration-300">
-                  <img
+                  <Image
+                  width={500}
+                  height={500}
                     src="https://corpbiz.io/img/feature_img.webp"
                     alt="FSSAI benefits"
                     className="w-full max-w-md object-cover transition-transform duration-500 group-hover:scale-105"
@@ -168,10 +171,10 @@ export default function Types({ data }: TypesProps) {
                     title={card.title}
                     shortText={card.shortText}
                     backText={card.backText}
-                    // className="border border-gray-200/50 hover:border-[#7AD955]/30 transition-all duration-300"
-                    // frontClassName="bg-gradient-to-br from-white to-gray-50"
-                    // backClassName="bg-gradient-to-br from-[#1D293D] to-gray-900 text-white"
-                    // icon={<AlertTriangle className="w-6 h-6 text-[#7AD955]" />}
+                    className="border border-gray-200/50 hover:border-[#7AD955]/30 transition-all duration-300"
+                    frontClassName="bg-gradient-to-br from-white to-gray-50"
+                    backClassName="bg-gradient-to-br from-[#1D293D] to-gray-900 text-white"
+                    icon={<AlertTriangle className="w-6 h-6 text-[#7AD955]" />}
                   />
                   <div className="absolute inset-0 rounded-2xl pointer-events-none overflow-hidden">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#7AD955_0%,transparent_70%)] opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
@@ -296,7 +299,9 @@ export default function Types({ data }: TypesProps) {
               <div className="relative group">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#7AD955] to-[#1D293D] rounded-3xl opacity-20 blur-xl group-hover:opacity-30 transition-all duration-500" />
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform group-hover:-translate-y-1 transition-transform duration-300">
-                  <img
+                  <Image
+                  width={500}
+                  height={500}
                     src="https://corpbiz.io/img/img4.webp"
                     alt="Process illustration"
                     className="w-full max-w-md object-cover transition-transform duration-500 group-hover:scale-105"
@@ -310,3 +315,5 @@ export default function Types({ data }: TypesProps) {
     </div>
   );
 }
+
+          

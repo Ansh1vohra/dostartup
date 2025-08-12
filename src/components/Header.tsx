@@ -9,9 +9,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openMainItem, setOpenMainItem] = useState<string | null>(null);
   const [openSubItem, setOpenSubItem] = useState<string | null>(null);
-  const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     if (!isMenuOpen) {
@@ -29,17 +27,16 @@ const Header = () => {
     setOpenSubItem(openSubItem === item ? null : item);
   };
 
-  // Close all menus
-  const closeAllMenus = () => {
-    setIsMenuOpen(false);
-    setOpenMainItem(null);
-    setOpenSubItem(null);
-  };
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        closeAllMenus();
+      if (
+        isMenuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+        setOpenMainItem(null);
+        setOpenSubItem(null);
       }
     };
 
@@ -47,16 +44,16 @@ const Header = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      // setScrolled(window.scrollY > 10); // This line was removed
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  // Menu items data structure
   const menuItems = [
     {
       title: "Startup",
@@ -65,8 +62,11 @@ const Header = () => {
           title: "FSSAI & Eating License",
           links: [
             { name: "FSSAI License", href: "/" },
-            { name: "FSSAI License Renewal", href: "/service/fssai-license-renewal" },
-            { name: "FSSAI State License", href: "/fssai-state-license" },
+            {
+              name: "FSSAI License Renewal",
+              href: "/startup/fssai-license-renewal",
+            },
+            { name: "FSSAI State License", href: "fssai-state-license" },
             { name: "Eating House License", href: "/startup/eating-house" },
             { name: "Central FSSAI License", href: "/startup/fssai-central" },
             {
@@ -93,39 +93,41 @@ const Header = () => {
               name: "Public Limited Company Registration",
               href: "/startup/public-limited",
             },
-            { name: "One Person Company Registration", href: "/startup/opc" },
+            {
+              name: "One Person Company Registration",
+              href: "/startup/opc-registration",
+            },
             {
               name: "Partnership Firm Registration",
-              href: "/startup/partnership",
+              href: "/startup/partnership-firm-registration",
             },
             {
               name: "Sole Proprietorship Registration",
-              href: "/startup/sole-proprietorship",
+              href: "/startup/sole-proprietorship-registration",
             },
-            { name: "Nidhi Company Registration", href: "/startup/nidhi" },
+            {
+              name: "Nidhi Company Registration",
+              href: "nidhi-company-registration",
+            },
             {
               name: "Producer Company Registration",
-              href: "/startup/producer",
+              href: "/producer-company-registration",
             },
             {
               name: "Sole Proprietorship to Pvt. Ltd. Company",
-              href: "/startup/prop-to-pvt",
-            },
-            {
-              name: "Conversion of Pvt. Ltd. to Public Limited",
-              href: "/startup/pvt-to-public",
+              href: "/conversion-of-sole-proprietorship",
             },
             {
               name: "Indian Subsidiary Company Registration",
-              href: "/startup/indian-subsidiary",
+              href: "/indian-subsidiary-company-registration",
             },
             {
               name: "Conversion of LLP to Private Company",
-              href: "/startup/llp-to-pvt",
+              href: "/llp-to-private-company-conversion",
             },
             {
               name: "Partnership Firm into Pvt. Ltd. Company",
-              href: "/startup/partnership-to-pvt",
+              href: "/convert-partnership-to-privateLtd",
             },
             {
               name: "Carbon Black Manufacturing",
@@ -146,6 +148,10 @@ const Header = () => {
               name: "Renewable Energy Business",
               href: "/startup/renewable-energy",
             },
+            {
+              name: "Conversion of Pvt. Ltd. to Public Limited",
+              href: "/conversion-of-private-limited-to-public-limited",
+            },
           ],
         },
         {
@@ -153,69 +159,105 @@ const Header = () => {
           links: [
             {
               name: "Winding Up of Private Limited Company",
-              href: "/startup/winding-up",
+              href: "/winding-up-private-limited-company",
             },
             {
               name: "Closing a Limited Liability Partnership",
-              href: "/startup/llp-closing",
+              href: "/closing-llp",
             },
             {
               name: "Annual Compliance of a Pvt. Ltd. Company",
-              href: "/startup/annual-compliance",
+              href: "/compliances-private-limited-company",
             },
             { name: "Annual Filing for LLP", href: "/startup/llp-filing" },
             {
               name: "Event Based Compliances in a Company",
-              href: "/startup/event-based",
+              href: "/event-based-compliances",
             },
             { name: "Change in Object Clause", href: "/startup/change-object" },
             {
               name: "Appointment and Resignation of Directors",
-              href: "/startup/directors-change",
+              href: "/director-appointment-resignation",
             },
-            { name: "Change in Name Clause", href: "/startup/change-name" },
-            { name: "Removal of Director", href: "/startup/remove-director" },
+            {
+              name: "Change in Name Clause",
+              href: "/company-naming-guidelines",
+            },
+            { name: "Removal of Director", href: "/director-removal-process" },
             {
               name: "Nidhi Company Compliance",
-              href: "/startup/nidhi-compliance",
+              href: "/nidhi-company-compliance",
             },
             {
               name: "Section 8 Company Compliance",
-              href: "/startup/section8-compliance",
+              href: "/section8-company-compliance",
             },
             { name: "NBFC Compliance", href: "/startup/nbfc-compliance" },
             {
               name: "Change in Registered Office",
-              href: "/startup/change-office",
+              href: "/change-registered-office",
             },
             {
               name: "Change in Share Capital",
-              href: "/startup/change-capital",
+              href: "/change-in-share-capital",
             },
             {
               name: "Revival of Struck Off Companies",
-              href: "/startup/revival",
+              href: "/change-in-struck-off-companies",
             },
             { name: "MCA Compliance", href: "/startup/mca-compliance" },
-            { name: "Change in Directors", href: "/startup/change-directors" },
+            { name: "Change in Directors", href: "/change-in-directors" },
             {
               name: "Change in LLP Agreement",
-              href: "/startup/change-llp-agreement",
+              href: "/change-in-llp-agreement",
             },
-            { name: "Liquidation of Company", href: "/startup/liquidation" },
-            { name: "AGR-Return Filing", href: "/startup/agr-return" },
-            { name: "Form AOC-4", href: "/startup/aoc-4" },
-            { name: "Form MGT-7", href: "/startup/mgt-7" },
-            { name: "SPICe+ Form", href: "/startup/spice-plus" },
-            { name: "AGILE PRO S", href: "/startup/agile-pro-s" },
+            {
+              name: "Liquidation of Company",
+              href: "/liquidation-of-a-company",
+            },
+            { name: "AGR-Return Filing", href: "/agr-return-filing" },
+            { name: "Form AOC-4", href: "/form-aoc-4" },
+            { name: "Form MGT-7", href: "/startup/mgt-7-compliance" },
+            { name: "SPICe+ Form", href: "/startup/spice-plus-compliance" },
+            { name: "AGILE PRO S", href: "/startup/agile-pro-s-compliance" },
           ],
         },
         {
           title: "IT Services",
+          links: [{ name: "Web services", href: "/web-development-services" }],
+        },
+        {
+          title: "Global Company Formation",
+          description:
+            "Company Incorporation Services Across International Jurisdictions",
           links: [
             {
-              name: "Web Development Company",
-              href: "/startup/web-development",
+              name: "Company Registration in USA",
+              href: "/startup/usa-company-registration",
+            },
+            {
+              name: "Company Registration in Mauritius",
+              href: "/startup/mauritius-company-registration",
+            },
+            {
+              name: "Company Registration in Dubai",
+              href: "/startup/dubai-company-registration",
+            },
+            {
+              name: "Company Registration in Sri Lanka",
+              href: "/startup/sri-lanka-company-registration",
+            },
+            {
+              name: "Company Registration in France",
+              href: "/startup/france-company-registration",
+            },
+            {
+              name: "Company Registration in Singapore",
+              href: "/startup/singapore-company-registration",
+            },
+            {
+              name: "Company Registration in Hong Kong",
+              href: "/startup/hong-kong-company-registration",
             },
           ],
         },
@@ -224,113 +266,193 @@ const Header = () => {
           links: [
             {
               name: "Shop & Establishment License",
-              href: "/startup/shop-license",
+              href: "/shop-and-establishment-license",
             },
-            { name: "CE Certification", href: "/startup/ce-certification" },
-            { name: "PSARA License", href: "/startup/psara" },
-            { name: "Trade License", href: "/startup/trade-license" },
-            { name: "Music License", href: "/startup/music-license" },
-            { name: "Health Trade License", href: "/startup/health-license" },
-            { name: "Factory License", href: "/startup/factory-license" },
-            { name: "FDA Certification", href: "/startup/fda-certification" },
-            { name: "GMP Certification", href: "/startup/gmp-certification" },
-            { name: "Liquor License", href: "/startup/liquor-license" },
-            { name: "AYUSH License", href: "/startup/ayush-license" },
-            { name: "WPC Certification", href: "/startup/wpc-certification" },
-            { name: "PESO Certification", href: "/startup/peso-certification" },
-            { name: "CAPEXIL Certificate", href: "/startup/capexil" },
-            { name: "TEC Certification", href: "/startup/tec-certification" },
-            { name: "NASSCOM Membership", href: "/startup/nasscom" },
-            { name: "MSO License", href: "/startup/mso-license" },
-            { name: "DOT OSP Compliance", href: "/startup/dot-osp" },
-            { name: "IP-1 License in India", href: "/startup/ip1-license" },
-            { name: "HITS Operator", href: "/startup/hits-operator" },
+            {
+              name: "CE Certification",
+              href: "/startup/ce-certification-compliance",
+            },
+            { name: "PSARA License", href: "/startup/psara-license" },
+            { name: "Trade License", href: "/trade-license" },
+            { name: "Music License", href: "/music-license" },
+            { name: "Health Trade License", href: "/health-trade-license" },
+            { name: "Factory License", href: "/factory-license" },
+            { name: "FDA Certification", href: "/fda-certification" },
+            { name: "GMP Certification", href: "/gmpCertification" },
+            { name: "Liquor License", href: "/liquor-license" },
+            { name: "AYUSH License", href: "/ayush-license" },
+            {
+              name: "WPC Certification",
+              href: "/startup/wpc-certification-compliance",
+            },
+            {
+              name: "PESO Certification",
+              href: "/startup/peso-certification-compliance",
+            },
+            { name: "CAPEXIL Certificate", href: "/capexil-registration" },
+            {
+              name: "TEC Certification",
+              href: "/startup/tec-certification-compliance",
+            },
+            { name: "NASSCOM Membership", href: "/nasscom-membership" },
+            { name: "MSO License", href: "/mso-license" },
+            { name: "DOT OSP Compliance", href: "/dot-osp-compliance" },
+            { name: "IP-1 License in India", href: "/ip-1-license" },
+            { name: "HITS Operator", href: "/hits-operator" },
             {
               name: "FIFP Approval for Telecom",
-              href: "/startup/fifp-telecom",
+              href: "/fifp-approval-telecom",
             },
             {
               name: "Halal Certification",
-              href: "/startup/halal-certification",
+              href: "/halal-certification",
             },
             {
               name: "Homologation Certificate in India",
-              href: "/startup/homologation",
+              href: "/homologation-certificate",
             },
             {
               name: "Vehicle Type Approval Certificate in India",
-              href: "/startup/vehicle-type-approval",
+              href: "/vehicle-type-approval-certificate",
             },
             {
               name: "IMEI Number Registration",
-              href: "/startup/imei-registration",
+              href: "/imei-registration",
             },
             {
               name: "IMEI Certificate for Import of Mobile Handsets",
-              href: "/startup/imei-certificate",
+              href: "/imei-certificate-import-mobile-handsets",
             },
             {
               name: "IMEI Certificate Generation",
-              href: "/startup/imei-certificate-generation",
+              href: "/imei-certificate-generation",
             },
           ],
         },
         {
           title: "Government Registration",
           links: [
-            { name: "MSME Registration", href: "/startup/msme" },
-            { name: "IEC Registration", href: "/startup/iec" },
-            { name: "EPF Registration", href: "/startup/epf" },
-            { name: "RERA Registration", href: "/startup/rera" },
-            { name: "NSIC Registration", href: "/startup/nsic" },
-            { name: "ESI Registration", href: "/startup/esi" },
-            { name: "FIEO Registration", href: "/startup/fieo" },
-            { name: "Building NOC", href: "/startup/building-noc" },
-            { name: "BOCW Act Registration", href: "/startup/bocw" },
+            {
+              name: "MSME Registration",
+              href: "/startup/msme-registration-india",
+            },
+            {
+              name: "IEC Registration",
+              href: "/startup/iec-code-registration",
+            },
+            { name: "EPF Registration", href: "/epf-registration" },
+            { name: "RERA Registration", href: "/startup/rera-registration" },
+            { name: "NSIC Registration", href: "/startup/nsic-registration" },
+            { name: "ESI Registration", href: "/esi-registration" },
+            { name: "FIEO Registration", href: "/fieo-registration" },
+            { name: "Building NOC", href: "/building-noc" },
+            { name: "BOCW Act Registration", href: "/bocw-registration" },
             {
               name: "RERA Registration for Agents",
-              href: "/startup/rera-agent",
+              href: "/rera-registration-for-agents",
             },
             {
               name: "RERA Registration For Promoters",
-              href: "/startup/rera-promoter",
+              href: "/rera-registration-for-promoters",
             },
-            { name: "APEDA Registration", href: "/startup/apeda" },
-            { name: "RNI Registration", href: "/startup/rni" },
-            { name: "Spice Board Registration", href: "/startup/spice-board" },
-            { name: "Guest House Registration", href: "/startup/guest-house" },
-            { name: "Barcode Registration", href: "/startup/barcode" },
+            { name: "APEDA Registration", href: "/startup/apeda-registration" },
+            { name: "RNI Registration", href: "/startup/rni-registration" },
+            {
+              name: "Spice Board Registration",
+              href: "/spice-board-registration",
+            },
+            {
+              name: "Guest House Registration",
+              href: "/guest-house-registration",
+            },
+            { name: "Barcode Registration", href: "/barcode-registration" },
             {
               name: "World Manufacturer Identifier (WMI) Code",
-              href: "/startup/wmi-code",
+              href: "/world-manufacturer-identifier-wmi-code",
             },
             {
               name: "Telemarketing Registration in India",
-              href: "/startup/telemarketing",
+              href: "/telemarketing-registration-india",
             },
             {
               name: "Trusted Telecom Approval",
-              href: "/startup/trusted-telecom",
+              href: "/trusted-telecom-approval",
             },
             {
               name: "Get Uplinking or Downlinking Channels Permission in India",
-              href: "/startup/uplink-downlink",
+              href: "/uplinking-downlinking-permission",
             },
-            { name: "PM-WANI Registration", href: "/startup/pm-wani" },
+            {
+              name: "PM-WANI Registration",
+              href: "/startup/pm-wani-registration",
+            },
             {
               name: "Flipkart Seller Registration",
-              href: "/startup/flipkart-seller",
+              href: "/flipkart-seller-registration",
             },
             {
               name: "Sanitary Import Permit",
-              href: "/startup/sanitary-import",
+              href: "/sanitary-import-permit",
             },
-            { name: "NPOP Certification", href: "/startup/npop" },
+            { name: "NPOP Certification", href: "/npop-certification" },
             {
               name: "Coconut Board Registration",
-              href: "/startup/coconut-board",
+              href: "/startup/coconut-board-registration",
             },
-            { name: "Drone Registration", href: "/startup/drone" },
+            { name: "Drone Registration", href: "/drone-registration" },
+          ],
+        },
+        {
+          title: "ISO",
+          links: [
+            { name: "ISO Registration", href: "/iso-registration" },
+            { name: "ISO 14001 EMS", href: "/iso-certification-14001-ems" },
+            { name: "ISO 22000 FSMS", href: "/iso-22000-certification-fsms" },
+            {
+              name: "ISO 9001 2015",
+              href: "/iso-9001-2015-certification-quality-management-systems",
+            },
+            {
+              name: "ISO 50001 Energy Management",
+              href: "/iso-50001-energy-management",
+            },
+            {
+              name: "ISO 45001 certification",
+              href: "/startup/iso-45001-certification",
+            },
+            {
+              name: "ISO 20000 Certification",
+              href: "/iso-20000-certification",
+            },
+            {
+              name: "ISO 31000 Certification",
+              href: "/iso-31000-certification",
+            },
+            {
+              name: "ISO 13485 Certification",
+              href: "/iso-13485-certification",
+            },
+            {
+              name: "ISO 21101:2014 Certification",
+              href: "/iso-21101-2014-certification",
+            },
+            {
+              name: "ISO 37001:2016 Certification",
+              href: "/iso-37001-2016-certification",
+            },
+            {
+              name: "ISO 27001 ISMS Certification",
+              href: "/iso-27001-isms-certification",
+            },
+            {
+              name: "ISO 16001 Certification",
+              href: "/iso-16001-certification",
+            },
+            {
+              name: "ISO 39001 Certification",
+              href: "/iso-39001-certification",
+            },
+            { name: "ISO 2768-1 Certification", href: "/startup/iso-2768-1" },
           ],
         },
         {
@@ -343,53 +465,26 @@ const Header = () => {
               href: "/startup/section-8",
             },
             { name: "Society Registration", href: "/startup/society" },
-            { name: "FCRA Registration", href: "/startup/fcra" },
-            { name: "12AA Registration", href: "/startup/12aa" },
-            { name: "Trust Registration", href: "/startup/trust" },
+            { name: "FCRA Registration", href: "/startup/fcra-registration" },
+            { name: "12AA Registration", href: "/startup/12aa-registration" },
+            { name: "Trust Registration", href: "/startup/trust-registration" },
             { name: "12AB Registration", href: "/startup/12ab" },
             {
-              name: "Strike off Section 8 Companies",
-              href: "/startup/strikeoff-section8",
-            },
-            { name: "NGO CSR-1 Filing", href: "/startup/csr1" },
-            { name: "NGO CSR Consultancy", href: "/startup/csr-consultancy" },
-            { name: "NGO Income Tax Advisory", href: "/startup/ngo-tax" },
-            { name: "NGO Accounting", href: "/startup/ngo-accounting" },
-            { name: "NGO Project Report", href: "/startup/ngo-project-report" },
-            {
               name: "Trust Annual Compliance",
-              href: "/startup/trust-compliance",
-            },
-            { name: "NGO Darpan Registration", href: "/startup/darpan" },
-          ],
-        },
-        {
-          title: "ISO",
-          links: [
-            { name: "ISO Registration", href: "/startup/iso-registration" },
-            { name: "ISO 14001 EMS", href: "/startup/iso-14001" },
-            { name: "ISO 22000 FSMS", href: "/startup/iso-22000" },
-            { name: "ISO 9001 2015", href: "/startup/iso-9001" },
-            { name: "ISO 50001 Energy Management", href: "/startup/iso-50001" },
-            { name: "ISO 45001 certification", href: "/startup/iso-45001" },
-            { name: "ISO 20000 Certification", href: "/startup/iso-20000" },
-            { name: "ISO 31000 Certification", href: "/startup/iso-31000" },
-            { name: "ISO 13485 Certification", href: "/startup/iso-13485" },
-            {
-              name: "ISO 21101:2014 Certification",
-              href: "/startup/iso-21101",
+              href: "/startup/trust-annual-compliance",
             },
             {
-              name: "ISO 37001:2016 Certification",
-              href: "/startup/iso-37001",
+              name: "NGO Darpan Registration",
+              href: "/startup/ngo-darpan-registration",
             },
+            { name: "NGO CSR-1 Filing", href: "/ngo-csr-1-filing" },
+            { name: "NGO CSR Consultancy", href: "/ngo-csr-consultancy" },
             {
-              name: "ISO 27001 ISMS Certification",
-              href: "/startup/iso-27001",
+              name: "NGO Income Tax Advisory",
+              href: "/ngo-income-tax-advisory",
             },
-            { name: "ISO 16001 Certification", href: "/startup/iso-16001" },
-            { name: "ISO 39001 Certification", href: "/startup/iso-39001" },
-            { name: "ISO 2768-1 Certification", href: "/startup/iso-2768-1" },
+            { name: "NGO Accounting", href: "/ngo-accounting" },
+            { name: "NGO Project Report", href: "/ngo-project-report" },
           ],
         },
       ],
@@ -398,19 +493,114 @@ const Header = () => {
       title: "IPR",
       subItems: [
         {
-          title: "Trademark",
-          description: "Protect your brand identity",
+          title: "Trademark Services",
+          description: "Trademark-related Services and Filings",
           links: [
-            { name: "Trademark Registration", href: "/ipr/trademark" },
-            { name: "Trademark Search", href: "/ipr/trademark-search" },
+            {
+              name: "Trademark Registration",
+              href: "/startup/trademark-registration",
+            },
+            {
+              name: "Trademark Objection",
+              href: "/trademark-objection-in-india",
+            },
+            {
+              name: "Trademark Assignment",
+              href: "/trademark-assignment-in-india",
+            },
+            {
+              name: "Design Registration",
+              href: "/startup/design-registration",
+            },
+            {
+              name: "Trademark Rectification",
+              href: "/startup/trademark-rectification",
+            },
+            {
+              name: "Intellectual Property Dispute",
+              href: "/intellectual-property-dispute",
+            },
+            {
+              name: "International Trademark Registration",
+              href: "/startup/international-trademark-registration",
+            },
+            {
+              name: "Trademark Renewal",
+              href: "/trademark-renewal",
+            },
+            {
+              name: "Trademark Classes Finder",
+              href: "/trademark-class-finder",
+            },
+            {
+              name: "Trademark Hearing",
+              href: "/trademark-hearing",
+            },
+            {
+              name: "Trademark Licensing",
+              href: "/trademark-licensing",
+            },
+            {
+              name: "Trademark Opposition",
+              href: "/trademark-opposition",
+            },
+            {
+              name: "Design Registration Renewal and Restoration",
+              href: "/design-registration-renewal-restoration",
+            },
+            {
+              name: "Registration OF Geographical Indication (GI)",
+              href: "/startup/gi-registration",
+            },
+          ],
+        },
+        {
+          title: "Copyright",
+          description:
+            "Copyright Registrations, Licensing, and Objection Handling",
+          links: [
+            {
+              name: "Copyright Registration",
+              href: "/startup/copyright-registration",
+            },
+            {
+              name: "Copyright Disclaimer",
+              href: "/startup/copyright-disclaimer",
+            },
+            {
+              name: "Copyright Licensing",
+              href: "/startup/copyright-licensing",
+            },
+            {
+              name: "Copyright Objection",
+              href: "/startup/copyright-objection",
+            },
+            {
+              name: "Copyright Assignment",
+              href: "/startup/copyright-assignment",
+            },
           ],
         },
         {
           title: "Patent",
-          description: "Secure your inventions",
+          description: "Patent Filing, Search, and Legal Processes",
           links: [
-            { name: "Patent Filing", href: "/ipr/patent" },
-            { name: "Patent Search", href: "/ipr/patent-search" },
+            {
+              name: "Patent Registration",
+              href: "/startup/patent-registration",
+            },
+            {
+              name: "Indian Patent Search",
+              href: "/startup/indian-patent-search",
+            },
+            {
+              name: "Patent Opposition",
+              href: "/overview-of-patent-opposition",
+            },
+            {
+              name: "Patent Revocation",
+              href: "/startup/patent-revocation",
+            },
           ],
         },
       ],
@@ -419,19 +609,183 @@ const Header = () => {
       title: "Tax",
       subItems: [
         {
-          title: "Income Tax",
-          description: "Tax planning and filing services",
+          title: "Tax Filing",
+          description: "Tax Filing Services",
           links: [
-            { name: "ITR Filing", href: "/tax/itr" },
-            { name: "Tax Planning", href: "/tax/planning" },
+            {
+              name: "GST Registration",
+              href: "/gst-registration",
+            },
+            {
+              name: "GST Return Filing",
+              href: "/gst-return-filing",
+            },
+            {
+              name: "TDS Return Filing",
+              href: "/tds-return-filing-online",
+            },
+            {
+              name: "Professional Tax Registration",
+              href: "/professional-tax-registration",
+            },
+            {
+              name: "Income Tax Return Filing",
+              href: "/income-tax-return-filing",
+            },
           ],
         },
         {
-          title: "GST",
-          description: "Goods and Services Tax services",
+          title: "Service Related",
+          description: "Service Related Agreements",
           links: [
-            { name: "GST Registration", href: "/service/gst-registration" },
-            { name: "GST Filing", href: "/tax/gst-filing" },
+            {
+              name: "Service Level Agreement",
+              href: "/service-level-agreement",
+            },
+            {
+              name: "Share Purchase Agreement",
+              href: "/share-purchase-agreement",
+            },
+            {
+              name: "Franchise Agreement",
+              href: "/franchise-agreement",
+            },
+            {
+              name: "Shareholder’s Agreement",
+              href: "/shareholders-agreement",
+            },
+            {
+              name: "Joint Venture Agreement",
+              href: "/joint-venture-agreement",
+            },
+          ],
+        },
+        {
+          title: "Property Related",
+          description: "Property Related Agreements",
+          links: [
+            {
+              name: "Sale Deed Registration",
+              href: "/sale-deed-registration",
+            },
+            {
+              name: "Gift Deed",
+              href: "/gift-deed",
+            },
+            {
+              name: "Residential Rental Agreement",
+              href: "/residential-rental-agreement",
+            },
+            {
+              name: "Commercial Rental Agreement",
+              href: "/commercial-rental-agreement",
+            },
+            {
+              name: "Relinquishment Deed",
+              href: "/relinquishment-deed",
+            },
+            {
+              name: "Probate of Will",
+              href: "/probate-will",
+            },
+          ],
+        },
+        {
+          title: "Legal Services",
+          description: "Legal Services and Agreements",
+          links: [
+            { name: "Legal Notice", href: "/legal-notice" },
+            { name: "RERA Complaint", href: "/rera-complaint-by-dostatup" },
+            { name: "Cheque Bounce Notice", href: "/cheque-bounce-notice" },
+            { name: "Consumer Complaint", href: "/consumer-complaint" },
+            {
+              name: "Public Interest Litigation",
+              href: "/public-interest-litigation",
+            },
+            { name: "Caveat Petition", href: "/caveat-petition" },
+            {
+              name: "Legal Heir Certificate",
+              href: "/startup/legal-heir-certificate",
+            },
+            {
+              name: "Section 8-Demand Notice",
+              href: "/section-8-demand-notice",
+            },
+            {
+              name: "Succession Certificate in India",
+              href: "/succession-certificate",
+            },
+            {
+              name: "Lease Agreement Drafting",
+              href: "/lease-agreement-drafting",
+            },
+            { name: "Will Drafting", href: "/will-drafting" },
+            { name: "Mutual Divorce", href: "/mutual-divorce" },
+            { name: "Marriage Registration", href: "/marriage-registration" },
+            { name: "Divorce Notice", href: "/divorce-notice" },
+            { name: "Property Registration", href: "/property-registration" },
+            { name: "Property Valuation", href: "/property-valuation" },
+            { name: "Property Verification", href: "/property-verification" },
+            {
+              name: "Sexual Harassment at Workplace",
+              href: "/sexual-harassment-workplace",
+            },
+            { name: "Lease Registration", href: "/lease-registration" },
+            { name: "Will Registration", href: "/will-registration" },
+            { name: "Power of Attorney (POA)", href: "/power-of-attorney" },
+            {
+              name: "Divorce Settlement Agreement",
+              href: "/divorce-settlement-agreement",
+            },
+            { name: "Hindu Marriage Act", href: "/hindu-marriage-act" },
+            { name: "Bail Application", href: "/bail-application" },
+            { name: "Judicial Separation", href: "/judicial-separation" },
+            { name: "Special Leave Petition", href: "/special-leave-petition" },
+            { name: "Consulting Agreement", href: "/consulting-agreement" },
+            { name: "Tenant Eviction Notice", href: "/tenant-eviction-notice" },
+            { name: "Vendor Agreement", href: "/vendor-agreement" },
+            { name: "License Agreement", href: "/license-agreement" },
+            {
+              name: "Legal Notice for Defamation",
+              href: "/legal-notice-for-defamation",
+            },
+            {
+              name: "Legal Notice for Non-Payment of Salary",
+              href: "/legal-notice-for-non-payment-of-salary",
+            },
+          ],
+        },
+        {
+          title: "Advisory Services",
+          description: "Advisory Services by DOStartup",
+          links: [
+            {
+              name: "Professional Advisory Services",
+              href: "/startup/gst-registration",
+            },
+            {
+              name: "Legal Advisory Services",
+              href: "/legal-advisory-services",
+            },
+            { name: "GST Advisory Services", href: "/gst-advisory-services" },
+            {
+              name: "Pharma Consultancy Services in India",
+              href: "/pharma-consultancy-services",
+            },
+          ],
+        },
+        {
+          title: "Business Templates",
+          description: "Business Templates",
+          links: [
+            {
+              name: "Premium Business Templates",
+              href: "/premium-business-templates",
+            },
+            {
+              name: "Human Resource Templates",
+              href: "/human-resource-templates",
+            },
           ],
         },
       ],
@@ -440,19 +794,176 @@ const Header = () => {
       title: "Regulatory",
       subItems: [
         {
-          title: "Licenses",
-          description: "Essential business licenses",
+          title: "Legal Metrology",
+          description: "Legal Metrology Registrations and Licenses",
           links: [
-            { name: "FSSAI License", href: "/regulatory/fssai" },
-            { name: "IEC Code", href: "/regulatory/iec" },
+            {
+              name: "Legal Metrology Act Registration",
+              href: "/legal-metrology-act-registration",
+            },
+            {
+              name: "Model Approval Certificate for Weights and Measures",
+              href: "/model-approval-certificate",
+            },
+            { name: "LMPC Importer License", href: "/lmpc-certificate" },
+            {
+              name: "Legal Metrology Dealer License",
+              href: "/legal-metrology-dealer-licence",
+            },
+            {
+              name: "Legal Metrology Manufacturer License",
+              href: "/legal-metrology-manufacturer-license",
+            },
+            {
+              name: "Legal Metrology Repairer License",
+              href: "/legal-metrology-repairer-license",
+            },
+            {
+              name: "Packaged Commodity Registration",
+              href: "/packaged-commodity-registration",
+            },
+            {
+              name: "Legal Metrology License Renewal",
+              href: "/legal-metrology-license-renewal",
+            },
+            {
+              name: "Legal Metrology Compliance & Audit",
+              href: "/legal-metrology-compliance-audit",
+            },
           ],
         },
         {
-          title: "Certifications",
+          title: "BIS",
           description: "Quality and recognition certificates",
           links: [
-            { name: "ISO Certification", href: "/regulatory/iso" },
-            { name: "Startup India", href: "/regulatory/startup-india" },
+            { name: "BIS Registration", href: "/bis-registration" },
+            {
+              name: "Eco Mark Scheme Certification",
+              href: "/eco-mark-scheme-certification",
+            },
+            {
+              name: "ISI Mark Certification",
+              href: "/startup/isi-mark-certification",
+            },
+            { name: "BIS CRS Registration", href: "/bis-crs-registration" },
+            {
+              name: "BIS LAB Recognition Scheme",
+              href: "/bis-lab-recognition-scheme",
+            },
+            { name: "Hallmark Registration", href: "/hallmark-registration" },
+            {
+              name: "Assaying and Hallmarking Centre",
+              href: "/assaying-and-hallmarking-centre",
+            },
+            {
+              name: "BIS CRS Certification for Power Banks",
+              href: "/bis-crs-certification-for-power-banks",
+            },
+            { name: "AGMARK License", href: "/agmark-registration" },
+            {
+              name: "BIS Certification for Toys",
+              href: "/bis-certification-for-toys",
+            },
+            { name: "FMCS BIS Certification", href: "/fmcs-bis-certification" },
+            {
+              name: "Development, Planning & Implementation of CSR Strategy",
+              href: "/development-planning-implementation-of-csr-strategy",
+            },
+          ],
+        },
+        {
+          title: "CDSCO",
+          description: "CDSCO Licenses and Registrations",
+          links: [
+            { name: "Drug License", href: "/drug-license" },
+            { name: "Retail Drug License", href: "/retail-drug-license" },
+            {
+              name: "Manufacturing Drug License",
+              href: "/manufacturing-drug-license",
+            },
+            { name: "Wholesale Drug License", href: "/wholesale-drug-license" },
+            {
+              name: "Medical Device Registration",
+              href: "/cdsco-medical-device-registration",
+            },
+            { name: "CDSCO Registration", href: "/startup/cdsco-registration" },
+            {
+              name: "CDSCO Cosmetic Import Registration",
+              href: "/cdsco-cosmetic-import-registration",
+            },
+            {
+              name: "CDSCO Medical Device Import License",
+              href: "/cdsco-medical-device-import-license",
+            },
+            {
+              name: "Cosmetic Manufacturing License",
+              href: "/cosmetic-manufacturing-license",
+            },
+            {
+              name: "In Vitro Diagnostic Device Manufacturing License",
+              href: "/in-vitro-diagnostic-device-manufacturing-license",
+            },
+            {
+              name: "InVitro Diagnostic Device Import License",
+              href: "/in-vitro-diagnostic-device-import-license",
+            },
+            { name: "Drug Export NOC", href: "/drug-export-noc" },
+            { name: "Dual-Use NOC", href: "/dual-use-noc" },
+            { name: "CDSCO Test License", href: "/cdsco-test-license" },
+            { name: "ADC NOC", href: "/adc-noc" },
+            {
+              name: "CDSCO Drugs Import License",
+              href: "/cdsco-drugs-import-license",
+            },
+          ],
+        },
+        {
+          title: "IRDA",
+          description: "IRDA Licenses and Registrations",
+          links: [
+            {
+              name: "Insurance Company License",
+              href: "/insurance-company-license",
+            },
+            {
+              name: "Insurance Web Aggregator License",
+              href: "/insurance-web-aggregator-license",
+            },
+            {
+              name: "Insurance Broker License",
+              href: "/startup/insurance-broker-license",
+            },
+            {
+              name: "Insurance Surveyors and Loss Assessors Registration",
+              href: "/insurance-surveyor-loss-assessor-registration",
+            },
+            {
+              name: "Insurance Marketing Firm",
+              href: "/insurance-marketing-firm",
+            },
+            {
+              name: "Insurance Self-Network Platform",
+              href: "/insurance-self-network-platform",
+            },
+          ],
+        },
+        {
+          title: "FEMA",
+          description: "FEMA",
+          links: [
+            { name: "FEMA Compliance", href: "/fema-compliance" },
+            {
+              name: "Liaison Office Registration",
+              href: "/liaison-office-registration-india",
+            },
+            {
+              name: "Branch Office Registration",
+              href: "/branch-office-registration-india",
+            },
+            {
+              name: "Project Office Registration",
+              href: "/project-office-registration",
+            },
           ],
         },
       ],
@@ -461,14 +972,381 @@ const Header = () => {
       title: "Environmental",
       subItems: [
         {
-          title: "Clearances",
-          description: "Environmental compliance services",
+          title: "Pollution NOC",
+          description: "Pollution NOC",
           links: [
             {
-              name: "Environmental Clearance",
-              href: "/environmental/clearance",
+              name: "Fire Department NOC",
+              href: "/fire-department-noc-in-india",
             },
-            { name: "PCB NOC", href: "/environmental/pcb-noc" },
+            {
+              name: "Delhi Pollution Control Committee",
+              href: "/delhi-pollution-control-committee-authorization",
+            },
+            {
+              name: "Uttar Pradesh Pollution Control Board",
+              href: "/uttar-pradesh-pollution-control-board",
+            },
+            {
+              name: "NOC Pollution Control Board",
+              href: "/NOC-Pollution-Control-Board",
+            },
+            { name: "CGWA-Water Boring", href: "/cgwa-noc-water-boring" },
+            {
+              name: "E-waste License for Dismantling",
+              href: "/e-waste-license-for-dismantling",
+            },
+            {
+              name: "License for charging station in UP",
+              href: "/license-for-charging-station-in-up",
+            },
+            {
+              name: "Phase II Soil and Groundwater Investigations",
+              href: "/phase-ii-soil-and-groundwater-investigations",
+            },
+            {
+              name: "Consent for Establishment (CFE) from SPCB",
+              href: "/consent-for-establishment-cfe-from-spcb",
+            },
+          ],
+        },
+        {
+          title: "E-Waste Management",
+          description:
+            "Compliance and Authorization Services under E-Waste Rules",
+          links: [
+            {
+              name: "EPR Registration",
+              href: "/startup/epr-registration",
+            },
+            {
+              name: "Refurbisher Authorization and License",
+              href: "/refurbisher-authorization",
+            },
+            {
+              name: "PRO Authorization",
+              href: "/pro-authorization",
+            },
+            {
+              name: "Plastic Waste Authorization",
+              href: "/startup/plastic-waste-authorization",
+            },
+            {
+              name: "E-Waste Recycling Authorization",
+              href: "/e-waste-recycling-authorization",
+            },
+            {
+              name: "EPR Authorization for E-waste",
+              href: "/epr-authorization-e-waste",
+            },
+            {
+              name: "EPR Post Compliance (E-Waste)",
+              href: "/epr-post-compliance",
+            },
+            {
+              name: "Authorization for Export of E-waste",
+              href: "/authorization-export-e-waste",
+            },
+            {
+              name: "EPR Target Fulfilment",
+              href: "/epr-target-fulfilment",
+            },
+            {
+              name: "EPR Authorization For Battery Waste",
+              href: "/epr-authorization-battery-waste",
+            },
+            {
+              name: "EPR Credits From Plastic Waste Recyclers",
+              href: "/plastic-credit-scheme",
+            },
+            {
+              name: "EPR for Importers",
+              href: "/epr-certificate-importers",
+            },
+            {
+              name: "EPR Credits",
+              href: "/epr-credits-overview",
+            },
+            {
+              name: "E-waste Recycling License",
+              href: "/e-waste-recycling-license",
+            },
+            {
+              name: "EPR Registration for Producers and Brand Owners",
+              href: "/epr-registration-producers-brand-owners",
+            },
+            {
+              name: "EPR Fulfillment in E-Waste Management",
+              href: "/epr-fulfillment-e-waste-management",
+            },
+            {
+              name: "EPR Compliance",
+              href: "/epr-compliance",
+            },
+          ],
+        },
+        {
+          title: "Hazardous Waste Management",
+          description:
+            "Authorizations and Compliance for Hazardous, Biomedical, and Industrial Waste",
+          links: [
+            {
+              name: "Solid Waste Management Authorization",
+              href: "/solid-waste-management-authorization",
+            },
+            {
+              name: "Hazardous Waste Management Authorization",
+              href: "/hazardous-waste-management-authorization",
+            },
+            {
+              name: "Authorization for Import of Hazardous Waste",
+              href: "/authorization-import-hazardous-waste",
+            },
+            {
+              name: "Authorization for Export of Hazardous Waste",
+              href: "/authorization-export-hazardous-waste",
+            },
+            {
+              name: "Bio Medical Waste Recycling Plant",
+              href: "/bio-medical-waste-recycling-plant",
+            },
+            {
+              name: "Hazardous Waste Export Authorisation",
+              href: "/hazardous-waste-export-authorisation",
+            },
+            {
+              name: "Land Waste Management",
+              href: "/land-waste-management",
+            },
+            {
+              name: "Hazardous Waste Management and Compliance Assurance",
+              href: "/hazardous-waste-compliance-assurance",
+            },
+            {
+              name: "Industrial Waste Management",
+              href: "/industrial-waste-management",
+            },
+          ],
+        },
+        {
+          title: "Battery Waste Management",
+          description:
+            "Licensing and Registration for Battery Waste Handling and Import",
+          links: [
+            {
+              name: "New Lead Acid Battery Import License",
+              href: "/new-lead-acid-battery-import-license",
+            },
+            {
+              name: "Lithium-Ion Battery Import License",
+              href: "/lithium-ion-battery-import-license",
+            },
+            {
+              name: "Registration for Lead Acid Battery Recycling",
+              href: "/lead-acid-battery-recycling-registration",
+            },
+            {
+              name: "Registration for Scrap Battery Import",
+              href: "/scrap-battery-import-registration",
+            },
+          ],
+        },
+        {
+          title: "Environmental Advisory",
+          description:
+            "Consulting and Due Diligence Services for Environmental Compliance",
+          links: [
+            {
+              name: "Environment, Social and Governance (ESG) Strategies",
+              href: "/esg-strategies",
+            },
+            {
+              name: "Construction and Demolition (C&D) Waste Recycling",
+              href: "/startup/cd-waste-recycling",
+            },
+            {
+              name: "Risk Assessment",
+              href: "/risk-assessment",
+            },
+            {
+              name: "Supply Chain and Human Rights and Environmental Due Diligence",
+              href: "/supply-chain-human-rights-esdd",
+            },
+            {
+              name: "Carbon Credit Trading Scheme",
+              href: "/startup/carbon-credit-trading-scheme",
+            },
+            {
+              name: "Environmental Due Diligence Services",
+              href: "/environmental-due-diligence",
+            },
+          ],
+        },
+        {
+          title: "Environmental Industry",
+          description: "ESDD Services Across Industrial Sectors",
+          links: [
+            {
+              name: "ESDD in Food Processing Industry",
+              href: "/esdd-food-processing",
+            },
+            {
+              name: "ESDD in Tobacco Industry",
+              href: "/esdd-tobacco-industry",
+            },
+            {
+              name: "ESDD in Aerospace Industry",
+              href: "/esdd-aerospace-industry",
+            },
+            {
+              name: "ESDD in Renewable Energy Industry",
+              href: "/esdd-renewable-energy-industry",
+            },
+            {
+              name: "ESDD in Financial & Banking Sector",
+              href: "/esdd-financial-banking-sector",
+            },
+            {
+              name: "ESDD in Dairy Industry",
+              href: "/esdd-dairy-industry",
+            },
+            {
+              name: "ESDD in the Sugar Industry",
+              href: "/esdd-sugar-industry",
+            },
+            {
+              name: "ESDD in Iron and Steel Industry",
+              href: "/esdd-iron-steel-industry",
+            },
+            {
+              name: "ESDD in Agricultural Equipment Manufacturing Industry",
+              href: "/esdd-agricultural-equipment-industry",
+            },
+            {
+              name: "ESDD in Solar Energy Industry",
+              href: "/esdd-solar-energy-sector",
+            },
+            {
+              name: "ESDD in Furniture and Fixtures Industry",
+              href: "/esdd-furniture-fixtures",
+            },
+          ],
+        },
+        {
+          title: "EIA",
+          description: "EIA",
+          links: [
+            {
+              name: "State Pollution Control Board (SPCB) - NOC",
+              href: "/fire-department-noc-in-india",
+            },
+            {
+              name: "Environmental Auditing",
+              href: "/delhi-pollution-control-committee-authorization",
+            },
+            {
+              name: "Environmental Clearance",
+              href: "/startup/environmental-clearance",
+            },
+            {
+              name: "Environmental Impact Assessment (EIA)",
+              href: "/environmental-impact-assessment-eia",
+            },
+            {
+              name: "Hydrogeological survey report",
+              href: "/hydrogeological-survey-report",
+            },
+            {
+              name: "Half-Yearly Environmental Compliance",
+              href: "/half-yearly-environmental-compliance",
+            },
+            {
+              name: "Social Impact Assessment",
+              href: "/startup/social-impact-assessment",
+            },
+            {
+              name: "Wildlife Conservation Plan",
+              href: "/wildlife-conservation-plan",
+            },
+            {
+              name: "Environmental Management Plan Report",
+              href: "/consent-for-establishment-cfe-from-spcb",
+            },
+            {
+              name: "Consent for Operation (CFO)",
+              href: "/consent-for-operation-cfo",
+            },
+            {
+              name: "Extended Producer Responsibility",
+              href: "/extended-producer-responsibility",
+            },
+            {
+              name: "Soil Testing",
+              href: "/consent-for-establishment-cfe-from-spcb",
+            },
+          ],
+        },
+        {
+          title: "Environmental Licensing",
+          description: "Environmental Licensing",
+          links: [
+            {
+              name: "Authorized Vehicle Scrapping Facility (AVSF)",
+              href: "/authorized-vehicle-scrapping-facility-avsf",
+            },
+            {
+              name: "TSDF Facility Services",
+              href: "/how-to-start-treatment-storage-disposal-facility-tsdf",
+            },
+            { name: "iCAT Certification", href: "/icat-certification" },
+            {
+              name: "Environmental Auditing",
+              href: "/how-to-start-treatment-storage-disposal-facility-tsdf",
+            },
+            {
+              name: "Carbon Credit Accounting",
+              href: "/hydrogeological-survey-report",
+            },
+            {
+              name: "LEED Zero Carbon Certification",
+              href: "/leed-zero-carbon-certification",
+            },
+            {
+              name: "LEED Zero Water Certification",
+              href: "/leed-zero-water-certification",
+            },
+            {
+              name: "Green Building Certification",
+              href: "/green-building-certification",
+            },
+            { name: "PEFC Certification", href: "/pefc-certification" },
+            { name: "FSC Certification", href: "/consent-for-operation-cfo" },
+          ],
+        },
+        {
+          title: "Plastic Waste Management",
+          description: "Plastic Waste Management",
+          links: [
+            {
+              name: "EPR Authorization for Plastic waste Management",
+              href: "/epr-authorization-for-plastic-waste-management",
+            },
+            {
+              name: "EPR Post Compliance – Plastic Waste",
+              href: "/epr-post-compliance-plastic-waste",
+            },
+            {
+              name: "Plastic Waste Recycling Plant & PWM",
+              href: "/plastic-waste-recycling-plant-pwm-setup",
+            },
+            {
+              name: "Plastic Waste Processors Authorisation",
+              href: "/plastic-waste-processors-authorisation",
+            },
+            {
+              name: "EPR Fulfilment For Plastic Waste Management",
+              href: "/epr-fulfilment-plastic-waste-management",
+            },
           ],
         },
       ],
@@ -479,14 +1357,18 @@ const Header = () => {
     },
   ];
 
-
   return (
-    <nav className="bg-slate-800 border-gray-200 text-white sticky top-0 z-50" ref={menuRef}>
+    <nav className="bg-slate-800 border-gray-200 text-white sticky top-0 z-50">
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+        {/* Logo and brand link */}
         <Link
           href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
-          onClick={closeAllMenus}
+          onClick={() => {
+            setIsMenuOpen(false);
+            setOpenMainItem(null);
+            setOpenSubItem(null);
+          }}
         >
           <Image
             src={Logo}
@@ -525,6 +1407,31 @@ const Header = () => {
             />
           </svg>
         </button>
+        {/* Mobile menu button */}
+        <button
+          onClick={toggleMenu}
+          type="button"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500"
+          aria-controls="mega-menu"
+          aria-expanded={isMenuOpen}
+        >
+          <span className="sr-only">Open main menu</span>
+          <svg
+            className="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 17 14"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M1 1h15M1 7h15M1 13h15"
+            />
+          </svg>
+        </button>
 
         {/* Desktop Navigation */}
         <div
@@ -538,14 +1445,21 @@ const Header = () => {
                   <Link
                     href={item.href}
                     className="block py-2 px-3 rounded cursor-pointer hover:bg-slate-700 md:hover:bg-transparent md:hover:text-emerald-300 md:p-0"
-                    onClick={closeAllMenus}
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setOpenMainItem(null);
+                      setOpenSubItem(null);
+                    }}
                   >
                     {item.title}
                   </Link>
                 ) : (
                   <>
                     <button
-                      onClick={() => toggleMainItem(item.title)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleMainItem(item.title);
+                      }}
                       className="flex items-center cursor-pointer justify-between w-full py-2 px-3 rounded hover:bg-slate-700 md:hover:bg-transparent md:border-0 md:hover:text-emerald-300 md:p-0 md:w-auto"
                     >
                       {item.title}
@@ -568,10 +1482,16 @@ const Header = () => {
 
                     {/* Desktop Dropdown - First Level */}
                     {openMainItem === item.title && (
-                      <div className="fixed inset-0 z-20 pointer-events-none">
+                      <div
+                        className="fixed inset-0 z-20"
+                        onClick={() => {
+                          setOpenMainItem(null);
+                          setOpenSubItem(null);
+                        }}
+                      >
                         {/* Menu container */}
                         <div
-                          className="fixed inset-x-0 top-16 bg-slate-800 border-b border-gray-700 shadow-lg z-30 pointer-events-auto"
+                          className="fixed inset-x-0 top-16 bg-slate-800 border-b border-gray-700 shadow-lg z-30"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <div className="container mx-auto flex h-[70vh]">
@@ -581,11 +1501,12 @@ const Header = () => {
                                 {item.subItems?.map((subItem, subIndex) => (
                                   <li key={subIndex}>
                                     <button
-                                      onClick={() =>
+                                      onClick={(e) => {
+                                        e.stopPropagation();
                                         toggleSubItem(
                                           `${item.title}-${subItem.title}`
-                                        )
-                                      }
+                                        );
+                                      }}
                                       className={`flex justify-between cursor-pointer items-center w-full px-6 py-3 hover:bg-slate-700 hover:text-emerald-300 text-left ${
                                         openSubItem ===
                                         `${item.title}-${subItem.title}`
@@ -628,24 +1549,26 @@ const Header = () => {
                                       key={subItem.title}
                                       className="flex flex-wrap gap-3"
                                     >
-                                      {subItem.links.map(
-                                        (link, linkIndex) => (
-                                          <div
-                                            key={linkIndex}
-                                            className="flex-shrink-0 w-64 hover:bg-slate-900 transition-colors px-2 py-1"
+                                      {subItem.links.map((link, linkIndex) => (
+                                        <div
+                                          key={linkIndex}
+                                          className="flex-shrink-0 w-64 hover:bg-slate-900 transition-colors px-2 py-1"
+                                        >
+                                          <Link
+                                            href={link.href}
+                                            className="block"
+                                            onClick={() => {
+                                              setIsMenuOpen(false);
+                                              setOpenMainItem(null);
+                                              setOpenSubItem(null);
+                                            }}
                                           >
-                                            <Link
-                                              href={link.href}
-                                              className="block"
-                                              onClick={closeAllMenus}
-                                            >
-                                              <h4 className="font-medium text-emerald-400">
-                                                {link.name}
-                                              </h4>
-                                            </Link>
-                                          </div>
-                                        )
-                                      )}
+                                            <h4 className="font-medium text-emerald-400">
+                                              {link.name}
+                                            </h4>
+                                          </Link>
+                                        </div>
+                                      ))}
                                     </div>
                                   )
                               )}
@@ -664,8 +1587,18 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-4 py-2 border-t border-gray-700 bg-slate-800">
+        <div
+          className="md:hidden fixed inset-0 z-40 mt-16 bg-black bg-opacity-50"
+          onClick={() => {
+            setIsMenuOpen(false);
+            setOpenMainItem(null);
+            setOpenSubItem(null);
+          }}
+        >
+          <div
+            className="px-4 py-2 border-t border-gray-700 bg-slate-800"
+            onClick={(e) => e.stopPropagation()}
+          >
             <ul className="space-y-1">
               {menuItems.map((item, index) => (
                 <li key={index}>
@@ -673,14 +1606,21 @@ const Header = () => {
                     <Link
                       href={item.href}
                       className="block py-2 px-3 rounded hover:bg-slate-700"
-                      onClick={closeAllMenus}
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setOpenMainItem(null);
+                        setOpenSubItem(null);
+                      }}
                     >
                       {item.title}
                     </Link>
                   ) : (
                     <>
                       <button
-                        onClick={() => toggleMainItem(item.title)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleMainItem(item.title);
+                        }}
                         className="flex items-center justify-between w-full py-2 px-3 rounded hover:bg-slate-700 text-left"
                       >
                         {item.title}
@@ -709,11 +1649,12 @@ const Header = () => {
                           {item.subItems?.map((subItem, subIndex) => (
                             <div key={subIndex}>
                               <button
-                                onClick={() =>
+                                onClick={(e) => {
+                                  e.stopPropagation();
                                   toggleSubItem(
                                     `${item.title}-${subItem.title}`
-                                  )
-                                }
+                                  );
+                                }}
                                 className="flex items-center justify-between w-full px-3 py-2 rounded hover:bg-slate-700 text-left"
                               >
                                 {subItem.title}
@@ -747,19 +1688,21 @@ const Header = () => {
                                 subItem.links && (
                                   <div className="ml-4 mt-1 space-y-1">
                                     <ul className="max-h-60 overflow-y-auto">
-                                      {subItem.links.map(
-                                        (link, linkIndex) => (
-                                          <li key={linkIndex}>
-                                            <Link
-                                              href={link.href}
-                                              className="block px-3 py-2 rounded hover:bg-slate-700 text-sm"
-                                              onClick={closeAllMenus}
-                                            >
-                                              {link.name}
-                                            </Link>
-                                          </li>
-                                        )
-                                      )}
+                                      {subItem.links.map((link, linkIndex) => (
+                                        <li key={linkIndex}>
+                                          <Link
+                                            href={link.href}
+                                            className="block px-3 py-2 rounded hover:bg-slate-700 text-sm"
+                                            onClick={() => {
+                                              setIsMenuOpen(false);
+                                              setOpenMainItem(null);
+                                              setOpenSubItem(null);
+                                            }}
+                                          >
+                                            {link.name}
+                                          </Link>
+                                        </li>
+                                      ))}
                                     </ul>
                                   </div>
                                 )}
