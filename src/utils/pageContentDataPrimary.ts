@@ -232,6 +232,8 @@ export type PageContentType = {
   comparison?: ComparisonTable[];
 };
 
+
+
 export const pageContent: Record<string, PageContentType> = {
   "eating-house-license": {
     title: "Eating House License Registration",
@@ -15884,6 +15886,87 @@ Ensuring these steps prevents legal issues and maintains accurate ROC records.`,
     ],
   },
 
+  "legal-metrology-act-registration": {
+    title: "Legal Metrology License",
+    description:
+      "Worried about the hurdles in getting a legal metrology license? Our experts ensure easy and effortless Legal Metrology Act Registration.",
+    "overview": [
+      {
+        "heading": "Compliance Order (September 2020)",
+        "content": "In September 2020, the Deputy Director of the Legal Metrology Department issued a Compliance Order directing all selling entities to follow the Legal Metrology Act, 2009 and the Legal Metrology (Packaged Commodities) Rules, 2011. The Order lays down mandatory declarations for every packaged commodity in the interests of consumers."
+      },
+      {
+        "heading": "Mandatory Declarations on Packages",
+        "content": "• Name and address of the packer\n• Name and address of the importer\n• Name and address of the manufacturer\n• Country of origin\n• Net quantity\n• Generic or common name of the commodity\n• Date/month/year of packing, manufacture and import\n• “Best Before” or expiry date (month and year)\n• Retail sale price\n• Customer-care contact details"
+      },
+      {
+        "heading": "Compliance Measures",
+        "content": "To remain compliant, businesses must: \n- Register packers, producers, and importers involved in packing, importing, distributing, selling or delivering pre-packaged commodities, as required by the Act and Rules.\n- Verify and stamp each registered packaged commodity.\n- Use weighing or measuring instruments only after verification and stamping.\n- Schedule re-verification if the instruments remain in continuous use.\n- Maintain records of licensed dealers, repairers, and manufacturers of weighing and measuring instruments.\n- Verify immovable instruments on-site—they cannot be transported elsewhere for stamping.\n- File monthly and quarterly returns on all instruments used, signed by a licensed dealer and submitted to the Controller of Legal Metrology.\n- Employ standard units (temperature, volume, mass, length, capacity, area, etc.) whenever issuing invoices or cash memos, declaring net quantity on labels, announcing prices, or publishing advertisements."
+      },
+      {
+        "heading": "Approved Weighing and Measuring Instruments",
+        "content": "Use only approved models of weighing and measuring instruments. Applicants must submit: \n- Full name and address of the applicant.\n- Testing procedures followed by the manufacturer.\n- Details of imported models (name/address of foreign manufacturer and corresponding Indian dealer).\n- Technical description, brand name, and intended uses of the instrument."
+      },
+      {
+        "heading": "Mandatory Label Declarations",
+        "content": "Display all mandatory label declarations whenever a pre-packaged commodity is packed, sold, offered, produced or processed for commercial sale in India."
+      }
+    ],
+    "benefits": [
+      {
+        "heading": "Purpose of Legal Metrology Compliance and Audits",
+        "content": "• Uphold uniform standards for weights and measures nationwide\n• Promote a rational metric system (metre, kilogram, litre, etc.)\n• Regulate trade and commerce in weighing and measuring devices\n• Ensure goods are sold, produced, and used strictly by standard units, numbers, and weights\n\nAudits are a vital part of the verification process, confirming that all weighing and measuring instruments meet statutory standards. \n• Voluntary audits – A manufacturer may initiate an audit to demonstrate internal controls that guarantee accuracy. Certificates must be renewed annually.\n• Mandatory audits – Required when a manufacturer must show compliance with the Act and Rules. Each product dispatched must carry a label that meets the Packaging Rules.\n\nWhy Conduct Audits?\n• Keep detailed records that feed into annual planning.\n• Secure adequate funding for licensing, calibration, verification, stamping, and enforcement activities.\n• Monitor internal controls so faults in instruments are detected early.\n• Manage departmental finances effectively, economically, and legally."
+      }
+    ],
+    "whyUs": [
+      {
+        "heading": "How DoStartup Can Assist",
+        "description": [
+          "Specialised support for Legal Metrology compliance and audits",
+          "Guidance on registration, verification, stamping and documentation",
+          "End‑to‑end fulfilment of every statutory requirement"
+        ],
+        "points": [
+          "Book a free consultation — receive a response within one hour."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Who mandates the declarations on packaged commodities?",
+        "answer": "The Deputy Director of the Legal Metrology Department, acting under the Legal Metrology Act, 2009 and the Legal Metrology (Packaged Commodities) Rules, 2011."
+      },
+      {
+        "question": "What information must appear on a packaged commodity?",
+        "answer": "See the mandatory declarations listed above (name/address of packer, importer, manufacturer, country of origin, net quantity, generic name, dates, price, and customer-care details)."
+      },
+      {
+        "question": "How are immovable weighing instruments verified?",
+        "answer": "They are verified and stamped on-site—they cannot be transported elsewhere."
+      },
+      {
+        "question": "Is registration compulsory for packers and importers?",
+        "answer": "Yes. Every entity that packs, imports, distributes, sells or delivers pre-packaged commodities must register under the Act."
+      },
+      {
+        "question": "Is model approval of weighing instruments required?",
+        "answer": "Absolutely. Only government-approved models may be manufactured, imported, or sold."
+      },
+      {
+        "question": "What is the most critical compliance step under Legal Metrology?",
+        "answer": "Including all mandatory declarations on every pre-packaged commodity offered for commercial sale."
+      },
+      {
+        "question": "Why are audits important?",
+        "answer": "Audits verify that instruments conform to statutory standards and that packaging information is accurate, protecting both consumers and businesses."
+      },
+      {
+        "question": "When are audits conducted?",
+        "answer": "Either voluntarily by the manufacturer or compulsorily when the law requires proof of compliance for each product batch."
+      }
+    ],
+  },
+
   "legal-metrology-compliance-audit": {
     title: "Legal Metrology Compliance & Audit",
     description:
@@ -26810,7 +26893,7 @@ Do Startup Assistance Process:
         heading: "Dostatup – Your Partner in BIS CRS Certification",
         description: [
           "The following compliance measures must be ensured for successful registration:\n• Testing must be done in a valid and approved BIS lab.\n• Labs must not be suspended or under inspection.\n• Product shipment to labs must be arranged efficiently by the manufacturer.\n• All documents must be notarized and signed by the manufacturer, brand owner, and AIR.\n• CDF and CCL must be completed accurately.\n• Test reports are valid for only 90 days and must be submitted before expiry.\n• Document preparation must be completed before sample testing.\n• Registration is typically approved within 15 to 60 days post submission.\n" +
-            "At Dostatup, we offer complete support for:\n• Document Preparation\n• BIS Lab Coordination\n• AIR Appointment for Foreign Brands\n• Technical Consultation\n• Certification Management from Start to Finish\nWhether you’re a domestic or foreign power bank manufacturer, Dostatup ensures hassle-free, fast, and compliant BIS CRS Certification services tailored to your needs.",
+          "At Dostatup, we offer complete support for:\n• Document Preparation\n• BIS Lab Coordination\n• AIR Appointment for Foreign Brands\n• Technical Consultation\n• Certification Management from Start to Finish\nWhether you’re a domestic or foreign power bank manufacturer, Dostatup ensures hassle-free, fast, and compliant BIS CRS Certification services tailored to your needs.",
         ],
         points: [],
       },
@@ -30344,6 +30427,309 @@ Do Startup Assistance Process:
           "Soil testing reveals key information such as nutrient deficiencies, toxic elements, pH levels, and soil structure, enabling efficient land use planning. Do Startup helps clients leverage soil testing insights for better yield, safety, and sustainability.",
       },
     ],
+  },
+  "environmental-auditing": {
+    title: "Environmental Auditing",
+    description:
+      "Embrace sustainability to reduce carbon footprints with hassle-free & seamless environmental auditing services with Dostartup",
+    "overview": [
+      {
+        "heading": "What is Environmental Auditing?",
+        "content": "Environmental auditing is a structured and comprehensive evaluation of an organization's environmental performance, policies, and processes. Conducted by certified environmental professionals, this audit ensures compliance with national and international environmental regulations. The primary objective is to identify risks, assess sustainability measures, track resource utilization, monitor waste management, and reduce environmental impact. As a strategic management tool, environmental auditing empowers organizations to evaluate their operational footprint, identify inefficiencies, and ensure readiness for regulatory inspections. Through continuous monitoring, it helps integrate environmental responsibility into business operations."
+      },
+      {
+        "heading": "Why Environmental Auditing is Crucial for Modern Enterprises",
+        "content": "In a global economy driven by ESG (Environmental, Social, and Governance) standards and sustainability benchmarks, environmental audits provide companies with a roadmap for compliance and sustainable growth. From minimizing carbon footprints to optimizing resource consumption, these audits are indispensable for reputation management, regulatory preparedness, and operational resilience."
+      }
+    ],
+    "benefits": [
+      {
+        "heading": "Regulatory Compliance",
+        "content": "Ensures adherence to environmental laws, reducing the risk of fines and penalties."
+      },
+      {
+        "heading": "Cost Efficiency",
+        "content": "Identifies energy and resource inefficiencies, lowering operational costs."
+      },
+      {
+        "heading": "Risk Mitigation",
+        "content": "Detects environmental hazards and implements preventive measures."
+      },
+      {
+        "heading": "Improved Stakeholder Trust",
+        "content": "Demonstrates a strong commitment to sustainability and social responsibility."
+      },
+      {
+        "heading": "Resource Optimization",
+        "content": "Enhances usage efficiency of water, energy, and raw materials."
+      },
+      {
+        "heading": "Operational Safety",
+        "content": "Identifies hazardous activities to ensure safer workplaces."
+      },
+      {
+        "heading": "Strategic Planning",
+        "content": "Supports data-driven decision-making for sustainable development."
+      },
+      {
+        "heading": "Market Advantage",
+        "content": "Positions companies as eco-conscious leaders, improving investor and customer relations."
+      }
+    ],
+    "documentsRequired": [
+      {
+        "heading": "Mandatory Environmental Documentation",
+        "content": "- Valid environmental permits and licenses\n- Environmental Management System (EMS) certifications (e.g., ISO 14001)\n- Waste management, water/energy usage, and emissions reports\n- Records of environmental incidents and preventive actions\n- Employee training logs and stakeholder communications"
+      }
+    ],
+    "eligibilityCriteria": [
+      {
+        "heading": "Auditor Qualifications and Common Pitfalls",
+        "content": "- Degree in environmental science, engineering, or a related discipline\n- ISO 14001 Lead Auditor certification (or equivalent)\n- Minimum 3–5 years of relevant experience\n- Familiarity with national/international environmental laws\n- Ethical integrity and unbiased judgment"
+      },
+      {
+        "heading": "Common Pitfalls in Environmental Auditing",
+        "content": "- Lack of updated compliance records\n- Incomplete EMS implementation\n- Inaccurate or outdated resource usage data\n- Poorly defined environmental objectives\n- Ineffective communication across departments"
+      },
+      {
+        "heading": "Non-Compliance Risks",
+        "content": "- Monetary fines and legal action\n- License suspension or revocation\n- Operational disruptions and audits\n- Reputational damage and stakeholder distrust"
+      }
+    ],
+    "whyUs": [
+      {
+        "heading": "DoStartup’s Environmental Auditing Solutions",
+        "description": [
+          "At DoStartup, we offer world-class environmental auditing solutions tailored for 20+ industries. Our services include:"
+        ],
+        "points": [
+          "Customized audit plans",
+          "End-to-end documentation support",
+          "Pre-audit assessments",
+          "Real-time compliance dashboards",
+          "Post-audit implementation guidance",
+          "Onsite and remote auditor training",
+          "With over 5000 certified environmental professionals, DoStartup ensures precision, transparency, and long-term sustainability for your organization."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is environmental auditing?",
+        "answer": "Environmental auditing is a systematic evaluation process to assess an organization's compliance with environmental laws and its internal sustainability practices."
+      },
+      {
+        "question": "Who is required to conduct environmental audits?",
+        "answer": "Any organization with potential environmental impact—manufacturing units, energy companies, food processors, educational institutions—must periodically undergo environmental auditing."
+      },
+      {
+        "question": "How often should environmental audits be performed?",
+        "answer": "Typically, audits are conducted annually. However, high-risk industries may require semi-annual or quarterly reviews."
+      },
+      {
+        "question": "What is included in an environmental audit?",
+        "answer": "Key components include EMS analysis, emission tracking, waste disposal review, compliance checks, and operational assessments."
+      },
+      {
+        "question": "Are there international standards for environmental auditing?",
+        "answer": "Yes. ISO 14001 provides globally recognized standards for Environmental Management Systems, often used in auditing."
+      },
+      {
+        "question": "What are the consequences of non-compliance?",
+        "answer": "Fines, legal penalties, operational shutdowns, reputational harm, and regulatory blacklisting can result from non-compliance."
+      },
+      {
+        "question": "How does environmental auditing support sustainability?",
+        "answer": "It identifies environmental inefficiencies, sets performance benchmarks, and fosters green innovation in operations."
+      },
+      {
+        "question": "What industries benefit most from environmental auditing?",
+        "answer": "Industries like manufacturing, chemical, textiles, food and beverage, mining, and construction gain significantly due to their high ecological impact."
+      },
+      {
+        "question": "Can environmental audits be customized?",
+        "answer": "Yes. At DoStartup, we tailor audit plans based on the size, scope, and environmental exposure of the business."
+      },
+      {
+        "question": "What qualifications should an environmental auditor have?",
+        "answer": "Auditors must have relevant academic background, certifications (e.g., ISO 14001 Lead Auditor), and hands-on audit experience."
+      },
+      {
+        "question": "What is the role of EMS in environmental auditing?",
+        "answer": "EMS helps organizations standardize, document, and review their environmental policies—playing a crucial role in successful audits."
+      },
+      {
+        "question": "How does DoStartup assist with environmental audits?",
+        "answer": "We provide end-to-end support—from audit planning, documentation, compliance verification to corrective action implementation and future compliance strategy."
+      }
+    ],
+  },
+
+  "environmental-management-plan-report": {
+    title: "Environmental Management Plan Report",
+    description:
+      "Ready to enhance your project's sustainability? Contact DoStartup to prepare an environmental management plan report and ensure environmental compliance is easily met!",
+    "overview": [
+      {
+        "heading": "Environmental Management Plan Report: A Complete Overview",
+        "content":
+          "If you want to successfully prepare an Environmental Management Plan (EMP) Report for your project, you’ve come to the right place."
+      },
+      {
+        "heading": "What is an Environmental Management Plan Report?",
+        "content":
+          "An Environmental Management Plan Report is a detailed document that outlines the strategies, control measures, and monitoring processes needed to minimize the negative environmental impacts of a project. It ensures that the project’s economic development aligns with environmental protection and sustainable growth in the project area. The EMP report acts as a guideline to measure and achieve compliance with environmental protection and mitigation requirements throughout the project lifecycle. Consult environmental experts at Do Startup to get your Environmental Management Plan Report prepared quickly, accurately, and affordably."
+      },
+      {
+        "heading": "What is an Environmental Management Plan (EMP)?",
+        "content":
+          "An EMP is a crucial part of a project’s environmental sustainability plan. It highlights the measures to reduce the environmental risks and adverse effects associated with a project. It provides a framework to manage environmental impacts and promote sustainable development in the surrounding ecosystem. EMP is a site-specific or project-specific plan that ensures effective environmental risk management through compliance with relevant laws and regulations."
+      },
+      {
+        "heading": "Importance of an Environmental Management Plan Report",
+        "content":
+          "● Identifies Potential Issues: Helps in recognizing potential environmental problems early and implementing best management practices.\n" +
+          "● Reduces Environmental Impact: Minimizes risks to health, safety, and environmental conditions.\n" +
+          "● Ensures Regular Reporting & Evaluation: Facilitates periodic review and assessment of environmental activities and performance.\n" +
+          "● Compliance with Environmental Laws: Guarantees adherence to environmental standards, laws, and guidelines.\n" +
+          "● Promotes Best Practices: Encourages waste prevention, recycling, treatment, and responsible resource management.\n" +
+          "● Maintains Energy Efficiency: Supports energy conservation and reduces resource depletion."
+      }
+    ],
+    "eligibilityCriteria": [
+      {
+        "heading": "Eligibility Criteria for Preparing an EMP Report",
+        "content":
+          "● Use of natural resources, toxic materials, or hazardous substances.\n" +
+          "● Activities causing noise, vibration, light, or heat emissions.\n" +
+          "● Projects near protected ecological or archaeological zones.\n" +
+          "● Construction requires special permissions or diversion of sanctuary land.\n" +
+          "● Requirement to monitor environmental impacts like water use, waste generation, etc.\n" +
+          "● Inclusion of training and emergency preparedness measures."
+      },
+      {
+        "heading": "Who Prepares Environmental Management Plan Reports?",
+        "content":
+          "● Manufacturing and chemical industries.\n" +
+          "● Agricultural and pharmaceutical sectors.\n" +
+          "● Forestry and land development businesses.\n" +
+          "● Environmental auditors, engineers, government bodies, and project developers."
+      }
+    ],
+    "documentsRequired": [
+      {
+        "heading": "Required Documents for Environmental Risk Management Plan",
+        "content": "- NOCs and consents under Air, Water, and Environmental Protection Acts\n- PUC certificates for construction vehicles\n- Environmental clearance certificates\n- Site layouts, emergency plans, proof of equipment and land ownership\n- Quality assurance and mitigation documentation"
+      }
+    ],
+    "clauses": [
+      {
+        "title": "Key Components of an Environmental Risk Management Plan",
+        "description":
+          "Identification and assessment of environmental risks.\n" +
+          "Risk reduction strategies and monitoring.\n" +
+          "Communication of environmental risks to stakeholders.\n" +
+          "Policy development and emergency response plans.\n" +
+          "Prioritization of environmental issues and disaster preparedness."
+
+      },
+      {
+        "title": "Objectives of an Environmental Management Plan Report",
+        "description":
+          "Enhance environmental performance and pollution prevention.\n" +
+          "Access new markets by demonstrating compliance.\n" +
+          "Improve staff awareness and morale regarding environmental issues.\n" +
+          "Strengthen public and stakeholder trust.\n" +
+          "Ensure sustainable use of natural resources.\n" +
+          "Mitigate adverse environmental impacts.\n" +
+          "Monitor long-term project effects and control measures."
+
+      },
+      {
+        "title": "Stages Involved in EMP Report Preparation",
+        "description":
+          "Mitigation Planning: Ensuring environmental quality protection as per project requirements.\n" +
+          "Monitoring Environmental Parameters: Tracking air, water, noise, and other pollutant levels.\n" +
+          "Ambient Air & Water Quality Reporting: Measuring pollutants like SPM, SO2, NO2, etc.\n" +
+          "Stack Emission Analysis: Ensuring emissions meet regulatory limits.\n" +
+          "Noise Monitoring: Assessing noise levels within and outside project premises.\n" +
+          "Quality Assurance: Calibration, analytical methods, and result presentation.\n" +
+          "Safety & Health: Conducting worker safety drills and health reporting."
+
+      }
+    ],
+    "whyUs": [
+      {
+        "heading": "Why Choose Do Startup for Your Environmental Management Plan Report?",
+        "description": [
+          "At Do Startup, we bring over a decade of experience in environmental management and compliance. With a proven track record of 1000+ successful projects, we ensure that every Environmental Management Plan Report is crafted to meet your project’s unique needs. Our expert team handles everything from documentation to regulatory approvals, offering affordable and hassle-free solutions."
+        ],
+        "points": [
+          "1000+ Successful Projects: Proven track record with timely delivery",
+          "99% Client Retention: Trusted by clients across industries",
+          "10+ Years Experience: Expertise across thousands of locations",
+          "Environmental Compliance Knowledge: Ensuring regulatory adherence",
+          "Comprehensive Documentation: Hassle-free paperwork handling",
+          "Custom EMP Solutions: Tailored to your project needs",
+          "Transparent Pricing: Affordable and clear pricing",
+          "Dedicated Support: End-to-end customer service from start to finish"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should be included in an Environmental Management Plan Report?",
+        "answer": "The EMP report should include details on environmental management measures, monitoring mechanisms, frequency and duration of monitoring, and trigger points for remedial actions when environmental thresholds are exceeded."
+      },
+      {
+        "question": "What is the goal of the Environmental Management Plan Report?",
+        "answer": "The goal is to minimize the adverse environmental impacts of a project by implementing and monitoring mitigation measures, ensuring sustainable development and compliance with environmental regulations."
+      },
+      {
+        "question": "What is the scope of the Environmental Management Plan Report?",
+        "answer": "The scope covers identification, assessment, and management of environmental risks and impacts associated with a project, including pollution control, resource conservation, and emergency response planning."
+      },
+      {
+        "question": "How often should the Environmental Management Plan Report be reviewed?",
+        "answer": "The EMP should be reviewed periodically—usually annually or as specified by regulatory authorities—to ensure ongoing effectiveness and to incorporate improvements based on monitoring results."
+      },
+      {
+        "question": "What are the salient features of the Environmental Management Plan Report?",
+        "answer": "• Identification of environmental risks\n• Mitigation strategies\n• Monitoring and reporting framework\n• Compliance with laws and standards\n• Emergency preparedness\n• Stakeholder communication plans"
+      },
+      {
+        "question": "What are the barriers to Environmental Management Plan implementation?",
+        "answer": "Common barriers include lack of awareness, insufficient resources, poor stakeholder engagement, regulatory complexities, and inadequate monitoring or enforcement."
+      },
+      {
+        "question": "What is the Environmental Management System under the Environmental Management Plan Report?",
+        "answer": "An Environmental Management System (EMS) is a structured framework within the EMP for planning, implementing, monitoring, and improving environmental performance and compliance."
+      },
+      {
+        "question": "What tools are used for the preparation of an Environmental Management Plan Report?",
+        "answer": "Tools include environmental impact assessment (EIA) reports, risk assessment matrices, Geographic Information Systems (GIS), monitoring equipment, and regulatory compliance checklists."
+      },
+      {
+        "question": "What is the environmental management plan?",
+        "answer": "An EMP is a detailed plan that outlines how a project will manage and mitigate its environmental impacts throughout its lifecycle."
+      },
+      {
+        "question": "What are the steps in the environmental management plan?",
+        "answer": "• Situation assessment and baseline study\n• Setting environmental objectives\n• Planning mitigation measures\n• Implementing the plan\n• Monitoring and measuring performance\n• Reviewing and improving the plan"
+      },
+      {
+        "question": "What are the 5 aspects that should be included in an Environmental Management Plan Report?",
+        "answer": "• Environmental risk identification\n• Mitigation measures\n• Monitoring and evaluation protocols\n• Compliance and reporting mechanisms\n• Emergency response procedures"
+      },
+      {
+        "question": "Who prepares the environmental risk management plan report?",
+        "answer": "Qualified environmental consultants, project developers, regulatory bodies, or trained environmental auditors and engineers typically prepare the report."
+      },
+      {
+        "question": "How to write an environmental management plan?",
+        "answer": "Begin by conducting an environmental impact assessment, then outline mitigation and monitoring measures, assign responsibilities, establish timelines, define compliance requirements, and describe procedures for review and improvement."
+      }
+    ]
   },
   "authorized-vehicle-scrapping-facility-avsf": {
     title: "Authorized Vehicle Scrapping Facility (AVSF)",
@@ -39224,4 +39610,182 @@ Do Startup Assistance Process:
       },
     ],
   },
+  "wordmark-registration-india": {
+    title: "Wordmark Registration in India",
+    description: "Wordmark registration protects the words and letters of your brand name (not the font or design). Registering a wordmark gives exclusive rights to use the brand name for specified goods or services under the Trade Marks Act, 1999, safeguards goodwill, reduces legal risk and strengthens market and investor credibility.",
+    overview: [
+      {
+        heading: "Overview of Wordmark Registration in India",
+        content: "Wordmark registration is a category of trademark registration in India. In wordmark registration, only the words and letters can be trademarked. This means you can register the brand name of your business. The focus is on the name itself, not on the font or style. Once registered, the owner gets exclusive rights to use the trademark, and no other entity can use the same name for similar goods or services.\n\nTrademark registration helps protect the business from legal disputes and gives it a unique identity. It safeguards the company’s goodwill, products, and services. The Trade Marks Act, 1999, governs this process in India."
+      },
+      {
+        heading: "Types of Trademarks",
+        content: "India offers registration for various types of trademarks, including:\n\n1. Wordmark or Service Mark\n• Wordmark: Usually the brand name that identifies the goods/services.\n• Service Mark: Identifies services offered by a company.\n\n2. Product Mark\n• Used for product-based businesses.\n• Filed under trademark classes 1–34, depending on the product category.\n\n3. Logo (Device Mark)\n• A design or symbol representing the company’s vision, product, or name.\n\n4. Collective Marks\n• Used by a group or association to distinguish their goods/services from others.\n\n5. Certification Marks\n• Indicates that goods/services meet certain quality or safety standards."
+      }
+    ],
+    benefits: [
+      {
+        heading: "Advantages of Wordmark Registration",
+        content: "1. Protection of Intellectual Property\n• Prevents others from using the same name.\n• Provides legal backing in case of disputes.\n\n2. Public Representation\n• Grants the right to represent your brand nationally.\n• No one else can register a similar trademark.\n\n3. Legal Remedies\n• The owner can restrict usage and claim damages if someone uses the registered mark unlawfully.\n\n4. Flexibility\n• A wordmark allows usage in any font or style.\n• However, accurate spelling is critical in the registration application."
+      }
+    ],
+    documentsRequired: [
+      {
+        heading: "Documents Required for Wordmark Registration",
+        content: "1. PAN Card – Proof of identity.\n2. Aadhar Card – Additional identity proof.\n3. Certificate of Incorporation – For companies/LLPs.\n4. Logo (optional) – If filing for a device mark.\n5. Form TM-48 – Authorises the trademark attorney to file on your behalf."
+      }
+    ],
+    Listicles: [
+      {
+        category: "Important Points Before Submitting a Wordmark Application",
+        documents: [
+          "Decide whether to register a wordmark, logo, or both.",
+          "A wordmark offers broader protection and allows flexibility in changing the logo later.",
+          "If a logo is trademarked and later changed, the new logo won’t be protected under the old trademark.",
+          "Filing separate applications for the name and logo ensures wider coverage, though it can be more expensive."
+        ]
+      },
+      {
+        category: "Who Can Apply / Eligibility",
+        documents: [
+          "Individual — Even without a business, individuals can register a trademark for future use.",
+          "Partnership Firm — All partners (not exceeding 10) must be named. Minor partners must be represented by a guardian.",
+          "Joint Owners — Both names must be mentioned in the application.",
+          "Proprietorship Firm — Filed in the name of the proprietor, not the firm.",
+          "LLP — Filed in the name of the LLP, not the partners.",
+          "Trust and Society — Application filed in the name of the chairman, trustee, or secretary.",
+          "Indian Company — Registered in the name of the company, not directors or promoters.",
+          "Foreign Company — Registered under the name as it appears in the home country, along with details like nature and country of registration."
+        ]
+      }
+    ],
+    registrationProcedure: [
+      {
+        heading: "Procedure of Wordmark Registration in India",
+        content: "Step 1: Trademark Search\n• Conduct a search on the official website of the Controller General of Patents, Designs & Trade Marks and other relevant databases.\n• Check if the selected mark is already in use, consider phonetic/visual similarities and related classes.\n\nStep 2: Filing the Trademark Application\n• Can be done online or offline. File in the appropriate class(es) with accurate applicant details, representation of the mark (if any), and goods/services specification.\n• On filing you receive an application number for tracking.\n\nStep 3: Examination by Trademark Office\n• Examiner verifies registrability — distinctiveness, descriptiveness, conflicts with earlier marks and compliance with formal requirements.\n• If accepted, the mark proceeds to publication. If objections arise (examination report), the applicant must respond within the specified time (usually 30 days) with arguments and evidence; a hearing may be granted if required.\n\nStep 4: Publication in the Trademark Journal\n• If the examiner accepts the mark after examination and replies, it is published in the Trademark Journal for four months to invite opposition from third parties.\n\nStep 5: Opposition and Disposal\n• Third parties may oppose during the publication period. If opposed, contested proceedings follow with evidence exchange, hearings and adjudication by the Registrar.\n\nStep 6: Registration Certificate\n• On successful completion of the opposition period (no opposition) or disposal in favour of the applicant, the Registrar issues a registration certificate.\n\nStep 7: Renewal\n• Registered trademarks are valid for ten years and renewable indefinitely in ten-year blocks by paying the prescribed renewal fee."
+      }
+    ],
+    feesStructure: [
+      {
+        heading: "Fees & Payment",
+        paymentMethods: [
+          "Online payment via IP India portal",
+          "Demand Draft (where applicable)",
+          "Bank transfer as per official instructions"
+        ],
+        description: "Government fees vary by applicant category (individual/startup/small entity get concessional rates) and by number of classes. Professional fees for searches, filing, prosecution and representation vary by service provider. Renewal fees apply every 10 years.",
+        feeTable: [
+          {
+            category: "Indicative government fee (per class for e-filing)",
+            amount: "Concessional rates for individuals/startups/small entities; standard rates for others (refer IP India fee schedule)"
+          }
+        ]
+      }
+    ],
+    registrationTimeline: [
+      {
+        heading: "Typical Timeline",
+        description: "Timelines vary with workload, objections, oppositions and speed of responses. Below is a typical flow assuming no complex opposition.",
+        steps: [
+          {
+            title: "Pre-filing search",
+            duration: "1–7 days",
+            description: "Clearance search across databases to identify conflicts and inform filing strategy."
+          },
+          {
+            title: "Filing",
+            duration: "1 day (online)",
+            description: "Submission of application and generation of application number."
+          },
+          {
+            title: "Examination",
+            duration: "2–9 months (varies)",
+            description: "Examination report issuance and time for applicant to respond to objections if any."
+          },
+          {
+            title: "Publication in Trademark Journal",
+            duration: "4 months",
+            description: "Statutory opposition period after advertisement."
+          },
+          {
+            title: "Registration issuance",
+            duration: "1–2 months after opposition period or disposal",
+            description: "Certificate issued if no opposition or if opposition resolved in applicant's favour."
+          }
+        ],
+        totalTime: "12–18 months (typical, subject to objections/oppositions)"
+      }
+    ],
+    whyUs: [
+      {
+        heading: "Expert Assistance with Dostatup",
+        description: [
+          "Dostatup provides end-to-end trademark support — from clearance searches and filing to handling objections, oppositions and renewals.",
+          "Our professionals have years of experience in handling trademark filings efficiently and legally, minimising procedural errors and rejections.",
+          "We guide on class selection, specification drafting, evidence of use, and enforcement strategy to maximise protection."
+        ],
+        points: [
+          "Comprehensive clearance search & risk assessment",
+          "Accurate application drafting and class planning",
+          "Timely responses to examination reports and opposition handling",
+          "Renewal reminders, portfolio management and enforcement support"
+        ],
+        footerText: "Dostatup assists businesses of all sizes to secure, enforce and commercialise brand assets efficiently."
+      }
+    ],
+    who: [
+      {
+        heading: "Who Can Apply / Eligibility",
+        description: [
+          "Multiple applicant types can apply — individuals, partnership firms, proprietors, LLPs, trusts, societies, Indian companies and foreign companies. The application must correctly identify applicant type and provide required documentary proof."
+        ],
+        points: [
+          "Individual — any natural person can apply even for future use.",
+          "Partnership Firm — application in the partnership name with partners listed.",
+          "Joint Owners — include names of all joint owners in the application.",
+          "Proprietorship — filed in the proprietor's name.",
+          "LLP — filed in the name of the LLP.",
+          "Trust / Society — filed in the name of the authorised office-bearer (e.g., chairman/secretary).",
+          "Indian Company — filed in the company name.",
+          "Foreign Company — filed in the name that appears in the home jurisdiction with supporting registration details."
+        ],
+        footerText: "Selecting the correct applicant entity and name at filing avoids procedural complications and potential rectification steps later."
+      }
+    ],
+    faq: [
+      {
+        question: "Should I register a logo trademark or a word trademark?",
+        answer: "You can register both separately (wordmark for the name and device mark for the logo). If you must choose one, pick the element that primarily identifies your brand to consumers. Wordmarks give flexibility to change visual style later; device marks protect a specific graphical treatment."
+      },
+      {
+        question: "What is the difference between trademark protection and copyright protection?",
+        answer: "Trademarks protect brand identifiers like names, logos and symbols used to distinguish goods/services. Copyright protects original literary, artistic and musical works. A logo may attract both types of protection, but the legal regimes and remedies differ."
+      },
+      {
+        question: "Is trademark registration mandatory?",
+        answer: "No, but it is strongly recommended. Registration confers statutory rights, easier enforcement, and evidentiary advantages in disputes compared to relying solely on unregistered/common law rights."
+      },
+      {
+        question: "How long is a trademark valid?",
+        answer: "A registered trademark is valid for ten years from the date of registration and can be renewed indefinitely for further ten-year periods by paying the prescribed renewal fee."
+      },
+      {
+        question: "How long does the registration process take?",
+        answer: "Typically 12–18 months in straightforward cases without objections or oppositions. Complex prosecutions, oppositions or litigation can extend timelines significantly."
+      },
+      {
+        question: "What if my application is rejected?",
+        answer: "You may file a reasoned response to the examination report within the prescribed time. If the examiner is not satisfied, a hearing may be listed. Appeals are available against adverse decisions before tribunals and courts. Professional assistance can greatly improve the chances of overcoming rejections."
+      },
+      {
+        question: "Who can oppose my application during publication?",
+        answer: "Any person or entity (individual, company or organisation) who believes the proposed mark conflicts with their prior rights or causes confusion can file an opposition within the four-month statutory window after publication."
+      },
+      {
+        question: "Under which law is wordmark registration governed?",
+        answer: "All trademark registrations in India, including wordmarks, are governed by the Trade Marks Act, 1999 and the rules framed thereunder; procedural practice follows the Controller General of Patents, Designs & Trade Marks (IP India)."
+      }
+    ]
+  }
+
 };

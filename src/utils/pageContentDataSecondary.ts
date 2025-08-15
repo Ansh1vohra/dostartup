@@ -35,6 +35,8 @@ export type PageContentType = {
   };
 };
 
+
+
 export const pageContent: Record<string, PageContentType> = {
   "gst-registration": {
     overview: {
@@ -7250,7 +7252,7 @@ export const pageContent: Record<string, PageContentType> = {
       ],
     },
   },
-
+  
   "legal-heir-certificate": {
     overview: {
       heading: "Legal Heir Certificate – An Overview",
